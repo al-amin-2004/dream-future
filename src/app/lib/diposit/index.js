@@ -1,0 +1,56 @@
+
+
+const months = [
+  "jan", "feb", "mar", "apr", "may", "jun",
+  "jul", "aug", "sep", "oct", "nov", "dec"
+];
+
+// Coin calculation logic
+export function calculateCoins(data) {
+  const currentMonthIndex = new Date().getMonth(); // 0-based (Jan = 0)
+
+  return data.map((item) => {
+    let totalCoin = 0;
+
+    months.forEach((month, index) => {
+      if (index > currentMonthIndex) return;
+
+      const dateField = `${month}-date`;
+      const extraField = `${month}-extra`;
+
+      const date = Number(item[dateField]);
+      const extra = Number(item[extraField]);
+
+      if (!isNaN(date) && date > 0 && date <= 31) {
+        const coin = 30 - date;
+        totalCoin += coin;
+      }
+
+      if (!isNaN(extra) && extra > 0) {
+        const extraCoin = (extra * 10) / 100;
+        totalCoin += extraCoin;
+      }
+    });
+
+    return {
+      uid: item.uid,
+      img: item.img,
+      name: item.name,
+      totalCoin: Math.round(totalCoin),
+    };
+  });
+}
+
+// Fetching and processing leaderboard data
+export async function getLeaderboardData() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SITE_URL}/api/member-deposit`,
+    { cache: "no-store" }
+  );
+
+  const rawData = await res.json();
+  const calculatedData = calculateCoins(rawData);
+
+  // Sort descending by totalCoin
+  return calculatedData.sort((a, b) => b.totalCoin - a.totalCoin);
+}
