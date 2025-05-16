@@ -1,5 +1,5 @@
+import { Header } from "@/components/layout/Header";
 import { Inter, Nunito } from "next/font/google";
-import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,10 +20,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`bg-background dark:bg-dark-background ${inter.variable} ${nunito.variable}`}>
-        {children}
-      </body>
-    </html>
+    <div>
+      <Header/>
+      {children}
+    </div>
   );
 }
