@@ -1,7 +1,6 @@
-import useTheme from "@/app/lib/theme";
+import useTheme from "@/lib/theme";
 import Image from "next/image";
 import Link from "next/link";
-
 
 export const Logo = () => {
   const { theme } = useTheme();
@@ -11,9 +10,11 @@ export const Logo = () => {
       <div className="flex items-center gap-2 cursor-pointer">
         <Image
           key={theme}
-          src={theme === "dark"
-        ? "/logos/dream-future-logo-white.png"
-        : "/logos/dream-future-logo-black.png"}
+          src={
+            theme === "dark"
+              ? "/logos/dream-future-logo-white.png"
+              : "/logos/dream-future-logo-black.png"
+          }
           width={500}
           height={500}
           alt="Site Logo"

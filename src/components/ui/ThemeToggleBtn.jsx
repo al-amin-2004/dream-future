@@ -1,7 +1,7 @@
 'use client'
 
+import useTheme from "@/lib/theme";
 import { DarkIcon, SunIcon } from "../icons/icons";
-import useTheme from "@/app/lib/theme";
 
 export const ThemeToggleBtn = () => {
   const {theme, toggleTheme} = useTheme()

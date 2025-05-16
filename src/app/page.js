@@ -1,6 +1,6 @@
-import FinotiveFunding from "@/components/layout/landing/FinotiveFunding";
-import Hero from "@/components/layout/landing/Hero";
-import Services from "@/components/layout/landing/Services";
+import { FinotiveFunding, Hero, Services } from "./_components";
+
+
 
 export default function Home() {
   return (

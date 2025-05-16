@@ -1,6 +1,6 @@
 import LeaderboardList from "@/components/layout/leaderboard/LeaderboardList"
 import LeaderboardStage from "@/components/layout/leaderboard/LeaderboardStage";
-import { getLeaderboardData } from "@/app/lib/diposit";
+import { getLeaderboardData } from "@/lib/diposit";
 
 const leaderboard = async () => {
   const datas = await getLeaderboardData();

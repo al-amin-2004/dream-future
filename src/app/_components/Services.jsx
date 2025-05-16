@@ -1,12 +1,11 @@
 "use client";
 
 import { InfoIcon, LockIcon, PrivacyIcon } from "@/components/icons/icons";
-import { BgEffect } from "@/components/ui/BgEffect";
 import { CardTransparent } from "@/components/ui/CardTransparent";
 
 import { useState } from "react";
 
-const Services = () => {
+export const Services = () => {
   const [selectedCard, setSelectedCard] = useState(1);
 
   const cardData = [
@@ -59,5 +58,3 @@ const Services = () => {
     </section>
   );
 };
-
-export default Services;
