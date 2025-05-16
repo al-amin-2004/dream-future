@@ -1,7 +1,8 @@
 import { DiamondIcon } from '@/components/icons/icons';
 import Image from 'next/image';
 
-function LeaderboardList({sortedData}) {
+
+export const LeaderboardList =({sortedData}) => {
   return (
     <section>
         <div className='container mx-auto'>
@@ -49,5 +50,3 @@ function LeaderboardList({sortedData}) {
     </section>
   )
 }
-
-export default LeaderboardList;

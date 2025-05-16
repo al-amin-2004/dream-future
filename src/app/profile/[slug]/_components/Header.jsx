@@ -1,0 +1,26 @@
+
+import { ThemeToggleBtn } from "@/components/ui/ThemeToggleBtn";
+import { getLeaderboardData } from "@/lib/diposit";
+
+
+export const Header = async ({slug}) => {
+const datas = await getLeaderboardData();
+
+    const user = datas.find((item) => item.uid === slug);
+    if (!user) {
+    return <div className="text-red-500 text-center mt-10">User Not Found!</div>
+    }
+    return (
+        <header className="px-8 py-2 flex justify-between border-b border-dark-border">
+            <div>
+                <h1 className="text-4xl text-text dark:text-dark-text font-medium">Dream Future</h1>
+                <p className="text-dark-primary">A belevable Comitti limited</p>
+            </div>
+
+            <div className="flex gap-3 items-center">
+                <ThemeToggleBtn />
+                <h2 className="text-text dark:text-dark-text">{user.name}</h2>
+            </div>
+        </header>
+    );
+};

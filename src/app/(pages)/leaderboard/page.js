@@ -1,10 +1,10 @@
-import LeaderboardList from "@/components/layout/leaderboard/LeaderboardList"
-import LeaderboardStage from "@/components/layout/leaderboard/LeaderboardStage";
 import { getLeaderboardData } from "@/lib/diposit";
+import { LeaderboardList, LeaderboardStage } from "./_components";
+
 
 const leaderboard = async () => {
   const datas = await getLeaderboardData();
-  
+
 
   const topThree = datas
     .slice(0, 3)
@@ -14,8 +14,8 @@ const leaderboard = async () => {
 
   return (
     <main className="px-2.5 md:px-0">
-      <LeaderboardStage reorderedTopThree={reorderedTopThree}/>
-      <LeaderboardList sortedData={datas}/>
+      <LeaderboardStage reorderedTopThree={reorderedTopThree} />
+      <LeaderboardList sortedData={datas} />
     </main>
   )
 }

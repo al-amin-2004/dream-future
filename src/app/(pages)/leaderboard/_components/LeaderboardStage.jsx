@@ -2,7 +2,7 @@ import { DiamondIcon, KingIcon } from "@/components/icons/icons";
 import { Box3D } from "@/components/ui/Box";
 import Image from "next/image";
 
-function LeaderboardStage({ reorderedTopThree }) {
+export const LeaderboardStage = ({ reorderedTopThree }) => {
   return (
     <section>
       <div className="container mx-auto">
