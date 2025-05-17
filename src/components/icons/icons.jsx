@@ -434,3 +434,115 @@ export const SettingIcon = (className) => {
   </svg>
   );
 };
+
+
+export const FacebookIcon = (className) => {
+  return (
+    <svg
+    xmlns="http://www.w3.org/2000/svg"
+    aria-label="Facebook"
+    width={24}
+    height={24}
+    viewBox="0 0 512 512"
+    {...className}
+  >
+    <rect width={512} height={512} fill="#1877f2" rx="15%" />
+    <path
+      fill="#fff"
+      d="m355.6 330 11.4-74h-71v-48c0-20.2 9.9-40 41.7-40H370v-63s-29.3-5-57.3-5c-58.5 0-96.7 35.4-96.7 99.6V256h-65v74h65v182h80V330z"
+    />
+  </svg>
+  );
+};
+
+
+export const InstagramIcon = (className) => {
+  return (
+    <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={26}
+    height={26}
+    fill="none"
+    viewBox="0 0 32 32"
+    {...className}
+  >
+    <rect width={28} height={28} x={2} y={2} fill="url(#a)" rx={6} />
+    <rect width={28} height={28} x={2} y={2} fill="url(#b)" rx={6} />
+    <rect width={28} height={28} x={2} y={2} fill="url(#c)" rx={6} />
+    <path fill="#fff" d="M23 10.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+    <path
+      fill="#fff"
+      fillRule="evenodd"
+      d="M16 21a5 5 0 1 0 0-10 5 5 0 0 0 0 10m0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
+      clipRule="evenodd"
+    />
+    <path
+      fill="#fff"
+      fillRule="evenodd"
+      d="M6 15.6c0-3.36 0-5.04.654-6.324a6 6 0 0 1 2.622-2.622C10.56 6 12.24 6 15.6 6h.8c3.36 0 5.04 0 6.324.654a6 6 0 0 1 2.622 2.622C26 10.56 26 12.24 26 15.6v.8c0 3.36 0 5.04-.654 6.324a6 6 0 0 1-2.622 2.622C21.44 26 19.76 26 16.4 26h-.8c-3.36 0-5.04 0-6.324-.654a6 6 0 0 1-2.622-2.622C6 21.44 6 19.76 6 16.4zM15.6 8h.8c1.713 0 2.878.002 3.778.075.877.072 1.325.202 1.638.361a4 4 0 0 1 1.748 1.748c.16.313.29.761.36 1.638.074.9.076 2.065.076 3.778v.8c0 1.713-.002 2.878-.075 3.778-.072.877-.202 1.325-.361 1.638a4 4 0 0 1-1.748 1.748c-.313.16-.761.29-1.638.36-.9.074-2.065.076-3.778.076h-.8c-1.713 0-2.878-.002-3.778-.075-.877-.072-1.325-.202-1.638-.361a4 4 0 0 1-1.748-1.748c-.16-.313-.29-.761-.36-1.638C8.001 19.278 8 18.113 8 16.4v-.8c0-1.713.002-2.878.075-3.778.072-.877.202-1.325.361-1.638a4 4 0 0 1 1.748-1.748c.313-.16.761-.29 1.638-.36.9-.074 2.065-.076 3.778-.076"
+      clipRule="evenodd"
+    />
+    <defs>
+      <radialGradient
+        id="a"
+        cx={0}
+        cy={0}
+        r={1}
+        gradientTransform="rotate(-55.376 27.916 .066)scale(25.5196)"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#B13589" />
+        <stop offset={0.793} stopColor="#C62F94" />
+        <stop offset={1} stopColor="#8A3AC8" />
+      </radialGradient>
+      <radialGradient
+        id="b"
+        cx={0}
+        cy={0}
+        r={1}
+        gradientTransform="rotate(-65.136 29.766 6.89)scale(22.5942)"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#E0E8B7" />
+        <stop offset={0.445} stopColor="#FB8A2E" />
+        <stop offset={0.715} stopColor="#E2425C" />
+        <stop offset={1} stopColor="#E2425C" stopOpacity={0} />
+      </radialGradient>
+      <radialGradient
+        id="c"
+        cx={0}
+        cy={0}
+        r={1}
+        gradientTransform="matrix(38.50003 -5.5 1.1764 8.23476 .5 3)"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset={0.157} stopColor="#406ADC" />
+        <stop offset={0.468} stopColor="#6A45BE" />
+        <stop offset={1} stopColor="#6A45BE" stopOpacity={0} />
+      </radialGradient>
+    </defs>
+  </svg>
+  );
+};
+
+
+export const YoutubeIcon = (className) => {
+  return (
+    <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={26}
+    height={26}
+    fill="none"
+    viewBox="0 0 48 48"
+    {...className}
+  >
+    <circle cx={24} cy={24} r={20} fill="red" />
+    <path
+      fill="#fff"
+      fillRule="evenodd"
+      d="M35.3 16.378c.4.4.687.896.835 1.44.849 3.418.652 8.814.016 12.363a3.23 3.23 0 0 1-2.275 2.275C31.882 33 23.854 33 23.854 33s-8.027 0-10.022-.544a3.23 3.23 0 0 1-2.274-2.275c-.854-3.402-.62-8.802-.017-12.346a3.23 3.23 0 0 1 2.275-2.275c1.994-.543 10.022-.56 10.022-.56s8.027 0 10.022.544a3.23 3.23 0 0 1 1.44.834M27.943 24l-6.659 3.857v-7.714z"
+      clipRule="evenodd"
+    />
+  </svg>
+  );
+};

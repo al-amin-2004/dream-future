@@ -1,4 +1,4 @@
-import { getLeaderboardData } from "@/lib/diposit";
+import { getLeaderboardData } from "@/lib/db";
 import { LeaderboardList, LeaderboardStage } from "./_components";
 
 
