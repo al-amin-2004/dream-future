@@ -42,9 +42,16 @@ export function calculateCoins(data) {
 }
 
 // Fetching and processing leaderboard data
-export async function getLeaderboardData() {
+export const getLeaderboardData = async() => {
+
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+    ? process.env.NEXT_PUBLIC_BASE_URL
+    : (process.env.NODE_ENV === "development"
+        ? "http://localhost:3000"
+        : "https://dream-future.vercel.app");
+
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/api/member-deposit`,
+    `${BASE_URL}/api/member-deposit`,
     { cache: "no-store" }
   );
 
