@@ -1,5 +1,4 @@
 
-
 const months = [
   "jan", "feb", "mar", "apr", "may", "jun",
   "jul", "aug", "sep", "oct", "nov", "dec"
@@ -42,13 +41,13 @@ export function calculateCoins(data) {
 }
 
 // Fetching and processing leaderboard data
-export const getLeaderboardData = async() => {
+export const getLeaderboardData = async () => {
 
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
     ? process.env.NEXT_PUBLIC_BASE_URL
     : (process.env.NODE_ENV === "development"
-        ? "http://localhost:3000"
-        : "https://dream-future.vercel.app");
+      ? "http://localhost:3000"
+      : "https://dream-future.vercel.app");
 
   const res = await fetch(
     `${BASE_URL}/api/member-deposit`,
@@ -61,3 +60,55 @@ export const getLeaderboardData = async() => {
   // Sort descending by totalCoin
   return calculatedData.sort((a, b) => b.totalCoin - a.totalCoin);
 }
+
+
+
+
+
+
+export const members = async () => {
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+    ? process.env.NEXT_PUBLIC_BASE_URL
+    : (process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://dream-future.vercel.app");
+
+
+  const [depositRes, profileRes] = await Promise.all([
+    fetch(`${BASE_URL}/api/member-deposit`, { cache: "no-cache" }),
+    fetch(`${BASE_URL}/api/member-info`, { cache: "no-cache" }),
+  ]);
+
+  if (!depositRes.ok || !profileRes.ok) {
+    throw new Error("Failed to fetch one or both APIs");
+  }
+
+  const depositData = await depositRes.json();
+  const profileData = await profileRes.json();
+
+  const mergedDatas = depositData.map(depositUser => {
+
+    const profileUser = profileData.find(p => p.no === depositUser.no);
+    return {
+      ...depositUser,
+      ...profileUser,}
+    ;
+
+  });
+
+  const finalData = mergedDatas.map((mergedData) => {
+    return {
+      no: mergedData.no,
+      name: mergedData.name,
+      birthID: Number(mergedData.birthID),
+      birth: mergedData.birth,
+      mobile: `0${mergedData.mobile}`,
+      email: mergedData.email,
+      blood: mergedData.blood,
+    }
+  })
+
+  return finalData;
+}
+
+

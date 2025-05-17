@@ -17,7 +17,7 @@ export const Header = async ({ slug }) => {
         <h1 className="text-4xl text-text dark:text-dark-text font-medium">
           Dream Future
         </h1>
-        <p className="text-dark-primary">A belevable Comitti limited</p>
+        <p className="text-dark-primary">A believable Comitti limited</p>
       </div>
 
       <div className="flex gap-3 items-center">

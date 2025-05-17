@@ -32,11 +32,11 @@ export async function GET() {
     }
 
     return {
-      no: Number(user.no),
+      no: user.no,
       name: user.name,
       birthID: Number(user.birthID),
       birth: user.birth,
-      mobile: user.number,
+      mobile: user.mobile,
       email: user.email,
       blood: user.blood,
       bool: ["yes", "true"].includes((user.bool || "").toLowerCase()),
@@ -45,5 +45,5 @@ export async function GET() {
     };
   });
 
-  return NextResponse.json(users);
+  return NextResponse.json(data);
 }
