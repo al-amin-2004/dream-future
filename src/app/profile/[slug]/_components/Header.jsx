@@ -1,11 +1,11 @@
 import { DiamondIcon } from "@/components/icons/icons";
 import { ThemeToggleBtn } from "@/components/ui/ThemeToggleBtn";
-import { getLeaderboardData } from "@/lib/db";
+import { members } from "@/lib/db";
 
 export const Header = async ({ slug }) => {
-  const datas = await getLeaderboardData();
+  const member = await members();
 
-  const user = datas.find((item) => item.uid === slug);
+  const user = member.find((m) => m.uid === slug);
   if (!user) {
     return (
       <div className="text-red-500 text-center mt-10">User Not Found!</div>
@@ -23,7 +23,7 @@ export const Header = async ({ slug }) => {
       <div className="flex gap-3 items-center">
         <div className="flex items-center gap-2 text-text dark:text-dark-text bg-gray-300/20 px-3 py-1 rounded-full">
           <DiamondIcon className="size-5"/>
-          <span>{user.totalCoin}</span>
+          <span>{user.totalStone}</span>
         </div>
         <ThemeToggleBtn />
         <h2 className="text-text dark:text-dark-text">{user.name}</h2>

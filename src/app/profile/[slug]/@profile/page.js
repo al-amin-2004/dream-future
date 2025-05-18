@@ -1,12 +1,14 @@
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from "@/components/icons/icons";
-import { getLeaderboardData } from "@/lib/db";
+import { members } from "@/lib/db";
+
 import Image from "next/image"
 
 const Profile = async ({ params }) => {
-    const datas = await getLeaderboardData();
+    const member = await members();
+
     const { slug } = await params;
 
-    const user = datas.find((item) => item.uid === slug);
+    const user = member.find((m) => m.uid === slug);
     if (!user) {
         return <div className="text-red-500 text-center mt-10">User Not Found!</div>
     }
@@ -16,8 +18,8 @@ const Profile = async ({ params }) => {
             <div className="bg-white w-full h-full rounded-2xl space-y-5 flex-2/3">
                 <div className="flex justify-center h-[45%]">
                     <Image src={
-                        user.img
-                            ? `https://drive.google.com/uc?export=view&id=${user.img}`
+                        user.image
+                            ? `https://drive.google.com/uc?export=view&id=${user.image}`
                             : "/logos/dream-future-logo-black.png"} width={500} height={500} alt="Profile Picture" className="w-[70%] -mt-5 rounded-lg" />
                 </div>
                 <div className="text-black p-3 space-y-6">
