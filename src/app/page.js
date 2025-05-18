@@ -6,7 +6,7 @@ import { members } from "@/lib/db";
 
 const Home = async () => {
   const dd = await members()
-  console.log(dd);
+  // console.log(dd);
 
   return (
     <main>

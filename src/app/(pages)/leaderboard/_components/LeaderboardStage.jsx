@@ -13,7 +13,7 @@ export const LeaderboardStage = ({ reorderedTopThree }) => {
               key={data.position}
               position={data.position}
               name={data.name}
-              img={data.img}
+              img={data.image}
             />
           ))}
         </div>
@@ -62,8 +62,8 @@ export const LeaderboardStage = ({ reorderedTopThree }) => {
                     >
                       <Image
                         src={
-                          data.img
-                            ? `https://drive.google.com/uc?export=view&id=${data.img}`
+                          data.image
+                            ? `https://drive.google.com/uc?export=view&id=${data.image}`
                             : "/logos/dream-future-logo-white.png"
                         }
                         width={500}

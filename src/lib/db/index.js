@@ -4,41 +4,6 @@ const months = [
   "jul", "aug", "sep", "oct", "nov", "dec"
 ];
 
-// Coin calculation logic
-export function calculateCoins(data) {
-  const currentMonthIndex = new Date().getMonth(); // 0-based (Jan = 0)
-
-  return data.map((item) => {
-    let totalCoin = 0;
-
-    months.forEach((month, index) => {
-      if (index > currentMonthIndex) return;
-
-      const dateField = `${month}-date`;
-      const extraField = `${month}-extra`;
-
-      const date = Number(item[dateField]);
-      const extra = Number(item[extraField]);
-
-      if (!isNaN(date) && date > 0 && date <= 31) {
-        const coin = 30 - date;
-        totalCoin += coin;
-      }
-
-      if (!isNaN(extra) && extra > 0) {
-        const extraCoin = (extra * 10) / 100;
-        totalCoin += extraCoin;
-      }
-    });
-
-    return {
-      uid: item.uid,
-      img: item.img,
-      name: item.name,
-      totalCoin: Math.round(totalCoin),
-    };
-  });
-}
 
 // Fetching and processing leaderboard data
 export const getLeaderboardData = async () => {
@@ -64,8 +29,6 @@ export const getLeaderboardData = async () => {
 
 
 
-
-
 export const members = async () => {
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
     ? process.env.NEXT_PUBLIC_BASE_URL
@@ -87,10 +50,13 @@ export const members = async () => {
   const profileData = await profileRes.json();
 
 
+  // ==== Ekhane Duita Json Merge kora hoise ==== //
   const finalData = depositData.map(depositUser => {
     const profileUser = profileData.find(p => p.no === depositUser.no);
 
 
+
+    // ==== Ekhane Monthly Deposit er jonno new object create kora hoise ==== //
     const monthly = {};
 
     Object.keys(depositUser).forEach((key) => {
@@ -113,15 +79,80 @@ export const members = async () => {
       monthly[year][month][type] = isNaN(val) ? null : val;
     });
 
+
+
+
+
+    // ==== Ekhane Uniue ID Create kora hoise ==== //
+    let uid;
+
+    const birthIDNumber = profileUser?.birthID?.toString() || "";
+    const birth = profileUser?.birth || "";
+    const birthYear = birth.includes("-") ? birth.split("-")[0] : null;
+
+    if (birthIDNumber.length === 17) {
+      const year = birthIDNumber.slice(0, 4);
+      const last4 = birthIDNumber.slice(-4);
+      uid = (parseInt(year) * parseInt(last4))
+        .toString()
+        .slice(-6)
+        .padStart(6, "0");
+    } else if (birthIDNumber.length === 10 && birthYear) {
+      const year = birthYear.toString();
+      const last4 = birthIDNumber.slice(-4);
+      uid = (parseInt(year) * parseInt(last4))
+        .toString()
+        .slice(-6)
+        .padStart(6, "0");
+    } else {
+      uid = undefined;
+    }
+
+
+
+
+    // Ekhane Total Stone Calculate kora hoise
+    let totalStone = 0;
+
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonthIndex = currentDate.getMonth(); // Jan = 0, Dec = 11
+
+    Object.entries(monthly).forEach(([yearStr, monthsObj]) => {
+      const year = Number(yearStr);
+
+      Object.entries(monthsObj).forEach(([monthStr, monthData]) => {
+        const monthIndex = months.indexOf(monthStr); // months = ["jan", "feb", ...];
+
+        // ✅ Only count if the month is past or current
+        if (year < currentYear || (year === currentYear && monthIndex <= currentMonthIndex)) {
+          const { date, extra } = monthData;
+
+          if (!isNaN(date) && date > 0 && date <= 31) {
+            totalStone += 30 - date;
+          }
+
+          if (!isNaN(extra) && extra > 0) {
+            totalStone += (extra * 10) / 100;
+          }
+        }
+      });
+    });
+
+
+
     return {
-      monthly,
       no: profileUser?.no,
       name: profileUser?.name,
+      image: profileUser?.img,
       birthID: Number(profileUser?.birthID),
       birth: profileUser?.birth,
       mobile: `0${profileUser?.mobile}`,
       email: profileUser?.email,
       blood: profileUser?.blood,
+      totalStone: Math.round(totalStone),
+      monthly,
+      uid,
     };
   });
 
