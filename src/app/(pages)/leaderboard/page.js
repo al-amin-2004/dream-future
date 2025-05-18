@@ -14,6 +14,7 @@ const leaderboard = async () => {
   const topThree = sortedDatas.slice(0, 3).map((user, idx) => ({ ...user, position: idx + 1 }));
   const reorderedTopThree = [topThree[1], topThree[0], topThree[2]];
 
+
   return (
     <main className="px-2.5 md:px-0">
       <LeaderboardStage reorderedTopThree={reorderedTopThree} />

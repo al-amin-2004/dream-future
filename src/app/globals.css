@@ -26,7 +26,9 @@
 }
 
 
-#formanimate{
+
+/* Form Animation Start */
+#formAnimate{
     animation:shake 4s infinite;
 }
 
@@ -39,3 +41,54 @@
         transform: translateY(0px);
     }
 }
+/* Form Animation End */
+
+
+
+
+
+/* Loader Style Start */
+@keyframes pulse-slow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes ping-slow {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2.5s infinite;
+}
+
+.animate-ping-slow {
+  animation: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 5px #FFD700) drop-shadow(0 0 10px #FFA500);
+  }
+  to {
+    filter: drop-shadow(0 0 20px #FFA500) drop-shadow(0 0 30px #FF4500);
+  }
+}
+
+/* Loader Style End */

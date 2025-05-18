@@ -7,9 +7,10 @@ import Link from "next/link";
 
 export const FormUid = ({ className }) => {
   const [iptValue, setIptValue] = useState("");
+
   return (
     <div
-      id="formanimate"
+      id="formAnimate"
       className={twMerge(
         "w-full p-4 md:p-5 bg-black/30 dark:bg-white/10 backdrop-blur-sm rounded-lg md:w-[45%] md:mt-36 border border-primary",
         className
