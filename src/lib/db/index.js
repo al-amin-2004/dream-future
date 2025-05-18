@@ -86,29 +86,45 @@ export const members = async () => {
   const depositData = await depositRes.json();
   const profileData = await profileRes.json();
 
-  const mergedDatas = depositData.map(depositUser => {
 
+  const finalData = depositData.map(depositUser => {
     const profileUser = profileData.find(p => p.no === depositUser.no);
-    return {
-      ...depositUser,
-      ...profileUser,}
-    ;
 
+
+    const monthly = {};
+
+    Object.keys(depositUser).forEach((key) => {
+      const match = key.match(/^([a-z]{3})-(\d{4})-(date|extra|amount)$/);
+      if (!match) return;
+
+      const [_, monthStr, yearStr, type] = match;
+      const year = yearStr;
+      const month = monthStr.toLowerCase();
+
+      if (!monthly[year]) {
+        monthly[year] = {};
+      }
+
+      if (!monthly[year][month]) {
+        monthly[year][month] = { date: null, extra: null, amount: null };
+      }
+
+      const val = Number(depositUser[key]);
+      monthly[year][month][type] = isNaN(val) ? null : val;
+    });
+
+    return {
+      monthly,
+      no: profileUser?.no,
+      name: profileUser?.name,
+      birthID: Number(profileUser?.birthID),
+      birth: profileUser?.birth,
+      mobile: `0${profileUser?.mobile}`,
+      email: profileUser?.email,
+      blood: profileUser?.blood,
+    };
   });
-
-  const finalData = mergedDatas.map((mergedData) => {
-    return {
-      no: mergedData.no,
-      name: mergedData.name,
-      birthID: Number(mergedData.birthID),
-      birth: mergedData.birth,
-      mobile: `0${mergedData.mobile}`,
-      email: mergedData.email,
-      blood: mergedData.blood,
-    }
-  })
 
   return finalData;
 }
-
 

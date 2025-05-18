@@ -7,6 +7,7 @@ export async function GET() {
   const data = await res.json();
 
   const users = data.map((user) => {
+    
     const idNumber = user.birthID?.toString() || "";
     const birth = user.birth || "";
     const birthYear = birth.includes("-") ? birth.split("-")[0] : null;
