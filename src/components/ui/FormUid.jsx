@@ -3,23 +3,45 @@
 import { twMerge } from "tailwind-merge";
 import { Button } from "./Button";
 import { useState } from "react";
-import Link from "next/link";
+import { members } from "@/lib/db";
+import "@/styles/uidForm.css"
 
 export const FormUid = ({ className }) => {
   const [iptValue, setIptValue] = useState("");
+  const [valid, setValid] = useState(true);
+  const [shake, setShake] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const member = await members();
+    const validUids = member.map((m) => m.uid);
+
+
+    if (!iptValue.trim() || !validUids.includes(iptValue.trim())) {
+      setValid(false);
+      setShake(true);
+      setTimeout(() => setShake(false), 400);
+    } else{
+      setValid(true);
+      window.location.href = `/profile/${iptValue}`;
+    }
+  };
+
+  
+  
 
   return (
     <div
-      id="formAnimate"
       className={twMerge(
         "w-full p-4 md:p-5 bg-black/30 dark:bg-white/10 backdrop-blur-sm rounded-lg md:w-[45%] md:mt-36 border border-primary",
-        className
+        className, shake ? "animate-[shake_4s_infinite]":"animate-[shake-effect_0.4s_ease-in-out]"
       )}
     >
       <h2 className="text-2xl md:text-3xl dark:text-dark-primary text-center font-semibold font-heading mb-5 md:mb-12">
         Your UID
       </h2>
-      <form className="space-y-4 md:space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
         <div className="relative">
           <input
             id="uid"
@@ -38,11 +60,10 @@ export const FormUid = ({ className }) => {
           </label>
         </div>
 
-        <Link href={`/profile/${iptValue}`}>
-          <Button className="w-full rounded-sm hover:translate-0">
-            See Profile
-          </Button>
-        </Link>
+
+        <Button className={`w-full rounded-sm hover:translate-0`}>
+          See Profile
+        </Button>
       </form>
     </div>
   );

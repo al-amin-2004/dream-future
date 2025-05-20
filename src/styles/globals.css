@@ -27,24 +27,6 @@
 
 
 
-/* Form Animation Start */
-#formAnimate{
-    animation:shake 4s infinite;
-}
-
-@keyframes shake {
-    0%{
-        transform: translateY(0);
-    } 50% {
-        transform: translateY(-10px);
-    } 100% {
-        transform: translateY(0px);
-    }
-}
-/* Form Animation End */
-
-
-
 
 
 /* Loader Style Start */

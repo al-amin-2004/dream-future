@@ -1,8 +1,8 @@
 import { twMerge } from "tailwind-merge"
 
-export const Button = ({children, className}) => {
+export const Button = ({children, className, onClick}) => {
   return (
-    <button className={twMerge("px-4 py-1.5 rounded-full text-sm font-semibold font-heading cursor-pointer text-text bg-primary hover:bg-[#E6AC00] hover:translate-x-0.5 transition-all duration-300 ease-in-out",className)}>{children}</button>
+    <button onClick={onClick} className={twMerge("px-4 py-1.5 rounded-full text-sm font-semibold font-heading cursor-pointer text-text bg-primary hover:bg-[#E6AC00] hover:translate-x-0.5 transition-all duration-300 ease-in-out",className)}>{children}</button>
   )
 }
 
