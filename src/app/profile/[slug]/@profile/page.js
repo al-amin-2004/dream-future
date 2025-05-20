@@ -14,30 +14,30 @@ const Profile = async ({ params }) => {
     }
 
     return (
-        <div className="flex gap-10 h-full">
-            <div className="bg-white w-full h-full rounded-2xl space-y-5 flex-2/3">
+        <div className="flex flex-col md:flex-row gap-10 md:h-full">
+            <div className="bg-white w-full h-full rounded-2xl space-y-2 md:space-y-5 flex-2/3">
                 <div className="flex justify-center h-[45%]">
                     <Image src={
                         user.image
                             ? `https://drive.google.com/uc?export=view&id=${user.image}`
-                            : "/logos/dream-future-logo-black.png"} width={500} height={500} alt="Profile Picture" className="w-[70%] -mt-5 rounded-lg" />
+                            : "/logos/dream-future-logo-black.png"} width={500} height={500} alt="Profile Picture" className="w-[80%] md:w-[70%] -mt-10 md:-mt-5 rounded-lg" />
                 </div>
                 <div className="text-black p-3 space-y-6">
-                    <h1 className="text-3xl font-heading font-semibold text-center">{user.name}</h1>
+                    <h1 className="text-xl md:text-3xl font-heading font-semibold text-center">{user.name}</h1>
 
-                    <div className="border-b border-border flex justify-between px-3">
+                    <div className="border-b border-border flex justify-between md:px-3">
                         <h2 className="font-medium">Number:</h2>
-                        <p>+278742 723 23</p>
+                        <p className="text-sm md:text-base">{user.mobile}</p>
                     </div>
-                    <div className="border-b border-border flex justify-between px-3">
+                    <div className="border-b border-border flex justify-between md:px-3">
                         <h2 className="font-medium">Email:</h2>
-                        <p>example@gmail.com</p>
+                        <p className="text-sm md:text-base">{user.email}</p>
                     </div>
-                    <div className="border-b border-border flex justify-between px-3">
+                    <div className="border-b border-border flex justify-between md:px-3">
                         <h2 className="font-medium">Unique ID:</h2>
-                        <p>{user.uid}</p>
+                        <p className="text-sm md:text-base">{user.uid}</p>
                     </div>
-                    <div className="flex justify-center gap-8 mt-7">
+                    <div className="flex justify-center gap-8 md:mt-7">
                         <a href=""><FacebookIcon /></a>
                         <a href=""><InstagramIcon /></a>
                         <a href=""><YoutubeIcon /></a>
