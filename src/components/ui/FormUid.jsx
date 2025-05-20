@@ -8,7 +8,6 @@ import "@/styles/uidForm.css"
 
 export const FormUid = ({ className }) => {
   const [iptValue, setIptValue] = useState("");
-  const [valid, setValid] = useState(true);
   const [shake, setShake] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -19,11 +18,9 @@ export const FormUid = ({ className }) => {
 
 
     if (!iptValue.trim() || !validUids.includes(iptValue.trim())) {
-      setValid(false);
       setShake(true);
       setTimeout(() => setShake(false), 400);
     } else{
-      setValid(true);
       window.location.href = `/profile/${iptValue}`;
     }
   };
@@ -34,8 +31,8 @@ export const FormUid = ({ className }) => {
   return (
     <div
       className={twMerge(
-        "w-full p-4 md:p-5 bg-black/30 dark:bg-white/10 backdrop-blur-sm rounded-lg md:w-[45%] md:mt-36 border border-primary",
-        className, shake ? "animate-[shake_4s_infinite]":"animate-[shake-effect_0.4s_ease-in-out]"
+        "w-full p-4 md:p-5 bg-black/30 dark:bg-white/10 backdrop-blur-sm rounded-lg md:w-[45%] md:mt-36 border  border-primary",
+        className, shake ? "animate-[shake_4s_infinite] border-red-600":" animate-[shake-effect_0.4s_ease-in-out]"
       )}
     >
       <h2 className="text-2xl md:text-3xl dark:text-dark-primary text-center font-semibold font-heading mb-5 md:mb-12">
