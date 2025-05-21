@@ -8,6 +8,7 @@ import "@/styles/uidForm.css"
 
 export const FormUid = ({ className }) => {
   const [iptValue, setIptValue] = useState("");
+  const [inValid, setInValid] = useState(false);
   const [shake, setShake] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -18,6 +19,7 @@ export const FormUid = ({ className }) => {
 
 
     if (!iptValue.trim() || !validUids.includes(iptValue.trim())) {
+      setInValid(true)
       setShake(true);
       setTimeout(() => setShake(false), 400);
     } else{
@@ -38,7 +40,7 @@ export const FormUid = ({ className }) => {
       <h2 className="text-2xl md:text-3xl dark:text-dark-primary text-center font-semibold font-heading mb-5 md:mb-12">
         Your UID
       </h2>
-      <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-3 md:space-y-5">
         <div className="relative">
           <input
             id="uid"
@@ -55,6 +57,7 @@ export const FormUid = ({ className }) => {
           >
             Your Uid
           </label>
+          <p className="text-red-500 text-[11px] mt-1">{inValid && "Unique ID is InValid!"}</p>
         </div>
 
 
