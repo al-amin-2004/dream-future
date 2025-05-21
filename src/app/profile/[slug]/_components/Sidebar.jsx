@@ -44,7 +44,7 @@ export const Sidebar = ({ slug }) => {
         open ? "left-0" : "-left-full"
       }`}
     >
-      <LeftArrowIcon className={`absolute md:hidden top-0 translate-2/5 transition-all ${open ? "right-0 size-9 rotate-0" : "-right-[5.7rem] size-8 rotate-180"}`} onClick={() => setOpen(!open)}/>
+      <LeftArrowIcon className={`absolute md:hidden top-3 translate-x-3/5 transition-all ${open ? "right-2 size-9 rotate-0" : "-right-[5.7rem] size-8 rotate-180"}`} onClick={() => setOpen(!open)}/>
 
       <div className="flex items-center justify-center h-[23%]">
         <Image
@@ -60,8 +60,8 @@ export const Sidebar = ({ slug }) => {
         {navs.map(({ label, link, icon }, idx) => (
           <Link href={`/profile/${slug}/${link}`} key={idx}>
             <li
-              className={`px-5 py-2 mb-1 flex items-center gap-3 font-medium rounded-md hover:bg-primary dark:hover:bg-gray-400/10 hover:ps-6 transition-all ${
-                active === idx && "bg-primary dark:bg-gray-400/10 ps-6"
+              className={`px-5 py-2 mb-1 flex items-center gap-3 font-medium rounded-md hover:bg-primary dark:hover:bg-gray-400/20 hover:ps-6 transition-all ${
+                active === idx && "bg-primary dark:bg-gray-400/20 ps-6"
               }`}
               onClick={() => setActive(idx)}
             >
