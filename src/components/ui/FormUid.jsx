@@ -57,7 +57,7 @@ export const FormUid = ({ className }) => {
           >
             Your Uid
           </label>
-          <p className="text-red-500 text-[11px] mt-1">{inValid && "Unique ID is InValid!"}</p>
+          <p className="text-red-500 text-[11px] mt-1">{inValid && "Unique ID is Invalid!"}</p>
         </div>
 
 
