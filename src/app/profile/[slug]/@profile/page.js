@@ -14,7 +14,7 @@ const Profile = async ({ params }) => {
     }
 
     return (
-        <div className="flex flex-col md:flex-row gap-10 md:h-full">
+        <div className="flex-col md:flex-row gap-10 md:h-full">
             <div className="bg-white w-full h-full rounded-2xl space-y-2 md:space-y-5 flex-2/3">
                 <div className="flex justify-center h-[45%]">
                     <Image src={

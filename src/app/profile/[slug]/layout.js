@@ -6,8 +6,8 @@ export default async function ProfileLayout({ params, profile }) {
         <main className="md:h-screen flex w-full">
             <Sidebar slug={slug} />
 
-            <div className="w-full h-full flex flex-col">
-                <Header slug={slug} />\
+            <div className="w-full h-full grid grid-rows-12">
+                <Header slug={slug} />
 
                 {profile}
 

@@ -15,7 +15,7 @@ export const Header = async ({ slug }) => {
     );
   }
   return (
-    <header className="px-3 md:px-8 py-1.5 md:py-2 flex justify-between border-b border-dark-border">
+    <header className="row-span-1 px-3 md:px-8 py-1.5 md:py-2 flex justify-between border-b border-dark-border">
       <div className="md:hidden fill-text dark:fill-dark-text">
         <Link href="/"><Image
           src="/logos/dream-future-logo-white.png"
