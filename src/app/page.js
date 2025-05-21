@@ -1,12 +1,8 @@
 import { Header } from "@/components/layout/Header";
 import { FinotiveFunding, Hero, Services } from "./_components";
-import { members } from "@/lib/db";
 
 
-
-const Home = async () => {
-  const dd = await members()
-  // console.log(dd);
+const Home = () => {
 
   return (
     <main>

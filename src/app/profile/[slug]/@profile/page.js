@@ -20,7 +20,7 @@ const Profile = async ({ params }) => {
                     <Image src={
                         user.image
                             ? `https://drive.google.com/uc?export=view&id=${user.image}`
-                            : "/logos/dream-future-logo-black.png"} width={500} height={500} alt="Profile Picture" className="w-[80%] md:w-[70%] -mt-10 md:-mt-5 rounded-lg" />
+                            : "/logos/dream-future-logo-black.png"} width={500} height={500} alt="Profile Picture" className="w-[45%] md:w-[70%] -mt-10 md:-mt-5 rounded-lg" />
                 </div>
                 <div className="text-black p-3 space-y-6">
                     <h1 className="text-xl md:text-3xl font-heading font-semibold text-center">{user.name}</h1>

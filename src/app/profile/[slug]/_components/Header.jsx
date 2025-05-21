@@ -2,6 +2,7 @@ import { DiamondIcon } from "@/components/icons/icons";
 import { ThemeToggleBtn } from "@/components/ui/ThemeToggleBtn";
 import { members } from "@/lib/db";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Header = async ({ slug }) => {
   const member = await members();
@@ -16,13 +17,13 @@ export const Header = async ({ slug }) => {
   return (
     <header className="px-3 md:px-8 py-1.5 md:py-2 flex justify-between border-b border-dark-border">
       <div className="md:hidden fill-text dark:fill-dark-text">
-        <Image
+        <Link href="/"><Image
           src="/logos/dream-future-logo-white.png"
           width={500}
           height={500}
           alt="Logo"
           className="size-11 ms-9"
-        />
+        /></Link>
       </div>
 
       <div className="hidden md:block">

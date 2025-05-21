@@ -87,7 +87,7 @@ export const LeaderboardStage = ({ reorderedTopThree }) => {
                       }`}
                   >
                     <DiamondIcon className="size-3.5" />
-                    {data.totalCoin}
+                    {data.totalStone}
                   </span>
                   <h2
                     className={`font-medium italic ${

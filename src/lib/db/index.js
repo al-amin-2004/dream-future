@@ -147,7 +147,7 @@ export const members = async () => {
       image: profileUser?.img,
       birthID: Number(profileUser?.birthID),
       birth: profileUser?.birth,
-      mobile: `0${profileUser?.mobile}`,
+      mobile: profileUser?.mobile && `0${profileUser.mobile}`,
       email: profileUser?.email,
       blood: profileUser?.blood,
       totalStone: Math.round(totalStone),

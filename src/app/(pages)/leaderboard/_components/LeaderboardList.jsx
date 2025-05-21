@@ -15,9 +15,9 @@ export const LeaderboardList = ({ sortedDatas }) => {
           {sortedDatas.map((sortedData, idx) => (
             <li
               key={idx}
-              className="dark:even:bg-white/20 even:bg-primary/70 rounded-md grid grid-cols-7 items-center py-1.5 md:py-2 px-2 md:px-6 text-sm md:text-base"
+              className="dark:even:bg-white/20 even:bg-primary/70 rounded-md grid grid-cols-7 items-center py-3 md:py-2 px-2 md:px-6 text-sm md:text-base"
             >
-              <p>{sortedData.no}</p>
+              <p>{idx + 1}</p>
 
               <div className="flex items-center gap-4 col-start-2 col-end-7">
                 <Image

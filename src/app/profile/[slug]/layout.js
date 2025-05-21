@@ -1,6 +1,5 @@
 import { Header, Sidebar } from "./_components";
 
-
 export default async function ProfileLayout({ params, profile }) {
     const { slug } = await params;
     return (
