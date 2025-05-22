@@ -57,32 +57,7 @@ export const members = async () => {
 
 
     // ==== Ekhane Monthly Deposit er jonno new object create kora hoise ==== //
-    // const monthly = {};
-
-    // Object.keys(depositUser).forEach((key) => {
-    //   const match = key.match(/^([a-z]{3})-(\d{4})-(date|extra|amount)$/);
-    //   if (!match) return;
-
-    //   const [_, monthStr, yearStr, type] = match;
-    //   const year = yearStr;
-    //   const month = monthStr.toLowerCase();
-
-    //   if (!monthly[year]) {
-    //     monthly[year] = {};
-    //   }
-
-    //   if (!monthly[year][month]) {
-    //     monthly[year][month] = { date: null, extra: null, amount: null };
-    //   }
-
-    //   const val = Number(depositUser[key]);
-    //   monthly[year][month][type] = isNaN(val) ? null : val;
-    // });
-
-
-    const monthly = [];
-    const now = new Date();
-    const tempMonthlyMap = {};
+    const monthly = {};
 
     Object.keys(depositUser).forEach((key) => {
       const match = key.match(/^([a-z]{3})-(\d{4})-(date|extra|amount)$/);
@@ -92,48 +67,73 @@ export const members = async () => {
       const year = yearStr;
       const month = monthStr.toLowerCase();
 
-      if (!tempMonthlyMap[year]) tempMonthlyMap[year] = {};
-      if (!tempMonthlyMap[year][month]) {
-        tempMonthlyMap[year][month] = { amount: null, date: null, extra: null };
+      if (!monthly[year]) {
+        monthly[year] = {};
+      }
+
+      if (!monthly[year][month]) {
+        monthly[year][month] = { date: null, extra: null, amount: null };
       }
 
       const val = Number(depositUser[key]);
-      tempMonthlyMap[year][month][type] = isNaN(val) ? null : val;
+      monthly[year][month][type] = isNaN(val) ? null : val;
     });
 
 
-    Object.entries(tempMonthlyMap).forEach(([year, monthsObj]) => {
-      const filteredMonths = [];
+    // const monthly = [];
+    // const now = new Date();
+    // const tempMonthlyMap = {};
 
-      Object.entries(monthsObj).forEach(([month, data]) => {
-        const currentYear = now.getFullYear();
-        const currentMonthIndex = now.getMonth();
+    // Object.keys(depositUser).forEach((key) => {
+    //   const match = key.match(/^([a-z]{3})-(\d{4})-(date|extra|amount)$/);
+    //   if (!match) return;
 
-        const monthIndex = months.indexOf(month);
+    //   const [_, monthStr, yearStr, type] = match;
+    //   const year = yearStr;
+    //   const month = monthStr.toLowerCase();
+
+    //   if (!tempMonthlyMap[year]) tempMonthlyMap[year] = {};
+    //   if (!tempMonthlyMap[year][month]) {
+    //     tempMonthlyMap[year][month] = { amount: null, date: null, extra: null };
+    //   }
+
+    //   const val = Number(depositUser[key]);
+    //   tempMonthlyMap[year][month][type] = isNaN(val) ? null : val;
+    // });
+
+
+    // Object.entries(tempMonthlyMap).forEach(([year, monthsObj]) => {
+    //   const filteredMonths = [];
+
+    //   Object.entries(monthsObj).forEach(([month, data]) => {
+    //     const currentYear = now.getFullYear();
+    //     const currentMonthIndex = now.getMonth();
+
+    //     const monthIndex = months.indexOf(month);
 
   
-        const include =
-          Number(year) < currentYear ||
-          (Number(year) === currentYear && monthIndex <= currentMonthIndex);
+    //     const include =
+    //       Number(year) < currentYear ||
+    //       (Number(year) === currentYear && monthIndex <= currentMonthIndex);
 
-        if (include) {
-          filteredMonths.push({
-            [month]: {
-              amount: data.amount ?? 0,
-              date: data.date ?? 0,
-              extra: data.extra ?? 0
-            }
-          });
-        }
-      });
+    //     if (include) {
+    //       filteredMonths.push({
+    //         [month]: {
+    //           amount: data.amount ?? 0,
+    //           date: data.date ?? 0,
+    //           extra: data.extra ?? 0
+    //         }
+    //       });
+    //     }
+    //   });
 
-      if (filteredMonths.length > 0) {
-        monthly.push({
-          year,
-          month: filteredMonths
-        });
-      }
-    });
+    //   if (filteredMonths.length > 0) {
+    //     monthly.push({
+    //       year,
+    //       month: filteredMonths
+    //     });
+    //   }
+    // });
 
 
 

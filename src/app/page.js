@@ -2,8 +2,7 @@ import { Header } from "@/components/layout/Header";
 import { FinotiveFunding, Hero, Services } from "./_components";
 
 
-
-const Home = async () => {
+const Home = () => {
   return (
     <main>
       <Header />

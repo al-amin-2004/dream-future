@@ -14,13 +14,13 @@ const Profile = async ({ params }) => {
     }
 
     return (
-        <div className="flex-col md:flex-row gap-10 md:h-full">
+        <div className="flex flex-col md:flex-row gap-10 md:h-full">
             <div className="bg-white w-full h-full rounded-2xl space-y-2 md:space-y-5 flex-2/3">
                 <div className="flex justify-center h-[45%]">
                     <Image src={
                         user.image
                             ? `https://drive.google.com/uc?export=view&id=${user.image}`
-                            : "/logos/dream-future-logo-black.png"} width={500} height={500} alt="Profile Picture" className="w-[45%] md:w-[70%] -mt-10 md:-mt-5 rounded-lg" />
+                            : "/logos/dream-future-logo-black.png"} width={500} height={500} alt="Profile Picture" className="w-[45%] md:w-[70%] -mt-5 md:-mt-5 rounded-lg" />
                 </div>
                 <div className="text-black p-3 space-y-6">
                     <h1 className="text-xl md:text-3xl font-heading font-semibold text-center">{user.name}</h1>
