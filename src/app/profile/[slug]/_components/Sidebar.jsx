@@ -45,7 +45,7 @@ export const Sidebar = ({ slug }) => {
   ];
 
   
-  const finalNavs = slug === "130400"
+  const finalNavs = slug === "961640"
     ? [...navs, ...adminNavs]
     : navs;
 

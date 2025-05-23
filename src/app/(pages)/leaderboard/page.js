@@ -6,6 +6,7 @@ import { LeaderboardList, LeaderboardStage } from "./_components";
 const leaderboard = async () => {
   const member = await members()
 
+
   // ==== Ekhane Leaderboard er jonno list sorting kora hoise ==== //
   const sortedDatas = member.sort((a, b) => b.totalStone - a.totalStone);
 

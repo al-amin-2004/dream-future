@@ -8,9 +8,7 @@ export default async function ProfileLayout({ params, profile }) {
 
             <div className="w-full h-full md:h-auto md:grid grid-rows-12">
                 <Header slug={slug} />
-
                 {profile}
-
             </div>
         </main>
     );
