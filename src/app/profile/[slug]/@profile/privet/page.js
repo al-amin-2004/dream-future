@@ -9,7 +9,7 @@ const Privet = async () => {
 
   return (
     <section className="h-full">
-      <div className="container mx-auto h-full overflow-y-scroll">
+      <div className="container mx-auto h-full md:overflow-y-scroll">
         <ul className="grid md:grid-cols-4 justify-items-center gap-10 pt-6 md:pt-4">
           {member.map((user, idx) => (
             <li key={idx} className="w-full md:w-72 group hover:row-span-2 hover:h-full bg-slate-400/15 rounded-md cursor-pointer transition-all duration-500">
