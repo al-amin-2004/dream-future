@@ -24,7 +24,7 @@ export const Header = () => {
 
           <div className="flex items-center gap-x-28">
             <ul
-              className={`h-0 md:h-auto p-0 absolute w-full md:w-auto top-full left-0 md:border-none border-white/70 rounded-b-md md:static bg-white/20 md:bg-transparent md:flex items-center gap-x-5 overflow-hidden transition-all duration-300 ${
+              className={`h-0 md:h-auto p-0 absolute w-full md:w-auto top-full left-0 md:border-none border-white/70 rounded-b-md md:static bg-black md:bg-transparent md:flex items-center gap-x-5 overflow-hidden transition-all duration-300 ${
                 navOpen && "h-[6.2rem] p-1 border-t"
               }`}
             >
@@ -32,7 +32,7 @@ export const Header = () => {
                 <li key={list.link} onClick={() => setNavOpen(false)}>
                   <Link
                     href={`/${list.link}`}
-                    className="block px-2 py-1 hover:bg-amber-400/60 dark:hover:bg-amber-200/20 rounded-sm text-[15px] dark:text-dark-text transition-all duration-300 cursor-pointer hover:text-dark-text dark:hover:text-primary"
+                    className="block px-2 py-1 hover:bg-amber-400/60 dark:hover:bg-amber-200/20 rounded-sm text-[15px] text-white transition-all duration-300 cursor-pointer hover:text-dark-text dark:hover:text-primary"
                   >
                     {list.label}
                   </Link>

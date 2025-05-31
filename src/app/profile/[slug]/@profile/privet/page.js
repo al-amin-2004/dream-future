@@ -6,7 +6,7 @@ import { CopyBox } from "@/components/ui/Copybox";
 
 const Privet = async () => {
   const member = await members();
-  
+
 
   return (
     <section className="h-full">
@@ -46,7 +46,7 @@ const Privet = async () => {
                     <CopyBox content={user.uid} />
                   </div>
 
-                  <a href={`mailto:${user.email}`}>{user.email}</a>
+                  <p>{user.email}</p>
 
 
                   <div className="flex items-center justify-between">
@@ -64,7 +64,7 @@ const Privet = async () => {
                   </div>
 
 
-                  <div className="flex justify-between border-t px-1">
+                  <div className="flex justify-between border-t px-1 mt-5">
                     <div className="text-center">
                       <h4 className="font-medium">Balance</h4>
                       <p>{user.totalDeposit}</p>
