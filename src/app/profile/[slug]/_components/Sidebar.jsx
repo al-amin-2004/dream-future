@@ -15,7 +15,6 @@ import {
 export const Sidebar = ({ slug }) => {
   const [active, setActive] = useState(0);
   const [open, setOpen] = useState(false);
-  
 
   const navs = [
     {
@@ -37,18 +36,12 @@ export const Sidebar = ({ slug }) => {
       label: "Setting",
       link: "setting",
       icon: <SettingIcon />,
-    }
+    },
   ];
 
-    const adminNavs = [
-    { label: "Admin", link: "privet", icon: <AdminIcon />, }
-  ];
+  const adminNavs = [{ label: "Admin", link: "privet", icon: <AdminIcon /> }];
 
-  
-  const finalNavs = slug === "961640"
-    ? [...navs, ...adminNavs]
-    : navs;
-
+  const finalNavs = slug === "961640" ? [...navs, ...adminNavs] : navs;
 
   return (
     <aside
@@ -63,7 +56,7 @@ export const Sidebar = ({ slug }) => {
         onClick={() => setOpen(!open)}
       />
 
-      <div className="flex items-center justify-center h-[23%]">
+      <Link href="/" className="flex items-center justify-center h-[23%]">
         <Image
           src="/logos/dream-future-logo-white.png"
           alt="Sidebar Logo"
@@ -71,7 +64,7 @@ export const Sidebar = ({ slug }) => {
           height={500}
           className="w-[50%]"
         />
-      </div>
+      </Link>
 
       <ul className="px-5 text-text dark:text-dark-text text-lg">
         {finalNavs.map(({ label, link, icon }, idx) => (
