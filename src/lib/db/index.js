@@ -111,7 +111,7 @@ export const members = async () => {
 
     //     const monthIndex = months.indexOf(month);
 
-  
+
     //     const include =
     //       Number(year) < currentYear ||
     //       (Number(year) === currentYear && monthIndex <= currentMonthIndex);
@@ -198,6 +198,19 @@ export const members = async () => {
 
 
 
+    // == ekhane money calculate kora hoise == //
+    let totalDeposit = 0;
+    let totalExtra = 0;
+
+    Object.values(monthly).forEach((yearData) => {
+      Object.values(yearData).forEach((monthData) => {
+        totalDeposit += Number(monthData.amount || 0);
+        totalExtra += Number(monthData.extra || 0);
+      });
+    });
+
+
+
     return {
       no: profileUser?.no,
       name: profileUser?.name,
@@ -208,6 +221,9 @@ export const members = async () => {
       email: profileUser?.email,
       blood: profileUser?.blood,
       totalStone: Math.round(totalStone),
+      totalDeposit,
+      totalExtra,
+      totalMoney: totalDeposit + totalExtra,
       monthly,
       uid,
     };
