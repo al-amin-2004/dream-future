@@ -37,11 +37,11 @@ const History = async ({ params }) => {
           <Image src={
             user.image
               ? `https://drive.google.com/uc?export=view&id=${user.image}`
-              : "/logos/dream-future-logo-black.png"} width={500} height={500} alt="Profile" className="w-24 h-24 rounded-full object-cover mt-4 sm:mt-0 mx-auto" />
+              : "/logos/dream-future-logo-black.png"} width={500} height={500} alt="Profile" className="w-24 h-24 rounded-full object-cover mt-4 sm:mt-0 mx-auto md:mx-0" />
         )}
       </div>
 
-      <div className="space-y-3">
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
         <div className="bg-gray-800 p-2 md:p-4 rounded-lg shadow">
           <p className="text-lg font-semibold">Total Deposit</p>
           <p className="md:text-2xl font-bold text-green-400">৳ {user.totalDeposit}</p>
@@ -65,9 +65,9 @@ const History = async ({ params }) => {
           {Object.entries(monthlyData).reverse().map(([monthKey, value]) => (
             <div key={monthKey} className={`p-2 md:p-4 rounded-lg shadow-md ${value.amount > 0 ? 'bg-green-800' : 'bg-red-800'}`}>
               <h4 className="font-semibold text-lg">{monthNames[monthKey]}</h4>
-              <p><strong>Amount:</strong> ৳{value.amount}</p>
+              <p><strong>Amount:</strong> ৳ {value.amount}</p>
               <p><strong>Date:</strong> {value.date === 0 ? "Not Paid" : `Paid on ${value.date}`}</p>
-              <p><strong>Extra:</strong> ৳{value.extra}</p>
+              <p><strong>Extra:</strong> ৳ {value.extra}</p>
             </div>
           ))}
         </div>
