@@ -1,7 +1,7 @@
 import { BloodIcon, DiamondIcon } from "@/components/icons/icons";
 import { members } from "@/lib/db";
 import Image from "next/image";
-import "@/styles/admin.css"
+import "@/styles/scrollbar.css"
 import { CopyBox } from "@/components/ui/Copybox";
 
 const Privet = async () => {

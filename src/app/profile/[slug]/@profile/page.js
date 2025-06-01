@@ -5,6 +5,8 @@ import Image from "next/image"
 
 const Profile = async ({ params }) => {
     const member = await members();
+    console.log(member);
+    
 
     const { slug } = await params;
 

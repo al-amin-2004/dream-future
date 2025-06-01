@@ -1,9 +1,79 @@
-const History = () => {
-    return (
-        <div className="">
-          history
+import { members } from "@/lib/db";
+import Image from "next/image";
+import "@/styles/scrollbar.css"
+
+const monthNames = {
+  jan: "January",
+  feb: "February",
+  mar: "March",
+  apr: "April",
+  may: "May",
+  jun: "June",
+  jul: "July",
+  aug: "August",
+  sep: "September",
+  oct: "October",
+  nov: "November",
+  dec: "December"
+};
+
+const History = async ({ params }) => {
+  const member = await members();
+  const { slug } = await params;
+  const user = member.find((m) => m.uid === slug);
+
+
+  const year = "2025";
+  const monthlyData = user.monthly?.[year] || {};
+
+  return (
+    <div className="max-w-full h-full md:overflow-y-scroll p-2 md:p-6 bg-gray-900 text-white rounded-xl shadow-md space-y-6">
+      <h3 className="text-xl md:text-3xl font-semibold my-3 text-center">Payment History - {year}</h3>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between">
+
+        <h2 className="text-2xl font-bold hidden md:block">{user.name}</h2>
+
+        {user.image && (
+          <Image src={
+            user.image
+              ? `https://drive.google.com/uc?export=view&id=${user.image}`
+              : "/logos/dream-future-logo-black.png"} width={500} height={500} alt="Profile" className="w-24 h-24 rounded-full object-cover mt-4 sm:mt-0 mx-auto" />
+        )}
+      </div>
+
+      <div className="space-y-3">
+        <div className="bg-gray-800 p-2 md:p-4 rounded-lg shadow">
+          <p className="text-lg font-semibold">Total Deposit</p>
+          <p className="md:text-2xl font-bold text-green-400">৳ {user.totalDeposit}</p>
         </div>
-    );
+        <div className="bg-gray-800 p-2 md:p-4 rounded-lg shadow">
+          <p className="text-lg font-semibold">Total Extra</p>
+          <p className="md:text-2xl font-bold text-yellow-400">৳ {user.totalExtra}</p>
+        </div>
+        <div className="bg-gray-800 p-2 md:p-4 rounded-lg shadow">
+          <p className="text-lg font-semibold">Total Money</p>
+          <p className="md:text-2xl font-bold text-blue-400">৳ {user.totalMoney}</p>
+        </div>
+        <div className="bg-gray-800 p-2 md:p-4 rounded-lg shadow">
+          <p className="text-lg font-semibold">Total Stone</p>
+          <p className="md:text-2xl font-bold text-purple-400">{user.totalStone}</p>
+        </div>
+      </div>
+
+      <div>
+        <div className="grid gap-4">
+          {Object.entries(monthlyData).reverse().map(([monthKey, value]) => (
+            <div key={monthKey} className={`p-2 md:p-4 rounded-lg shadow-md ${value.amount > 0 ? 'bg-green-800' : 'bg-red-800'}`}>
+              <h4 className="font-semibold text-lg">{monthNames[monthKey]}</h4>
+              <p><strong>Amount:</strong> ৳{value.amount}</p>
+              <p><strong>Date:</strong> {value.date === 0 ? "Not Paid" : `Paid on ${value.date}`}</p>
+              <p><strong>Extra:</strong> ৳{value.extra}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default History;
