@@ -68,7 +68,7 @@ const Profile = async ({ params }) => {
                 </div>
 
 
-                <div className="bg-amber-600 h-full rounded-2xl">3</div>
+                <div className="bg-amber-600 h-full rounded-2xl"></div>
             </div>
         </div>
     )

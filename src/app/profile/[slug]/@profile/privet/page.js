@@ -3,6 +3,8 @@ import { members } from "@/lib/db";
 import Image from "next/image";
 import "@/styles/scrollbar.css"
 import { CopyBox } from "@/components/ui/Copybox";
+import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 
 const Privet = async () => {
   const member = await members();
@@ -78,8 +80,11 @@ const Privet = async () => {
                       <p>{user.totalMoney}</p>
                     </div>
                   </div>
-                </div>
 
+                  <Link href={`/profile/${user.uid}/history`}><Button className="w-full hover:translate-0">Payment History</Button></Link>
+
+
+                </div>
               </div>
             </li>
           ))}

@@ -41,7 +41,7 @@ export const Sidebar = ({ slug }) => {
 
   const adminNavs = [{ label: "Admin", link: "privet", icon: <AdminIcon /> }];
 
-  const finalNavs = slug === "961640" ? [...navs, ...adminNavs] : navs;
+  const finalNavs = slug === "994900" ? [...navs, ...adminNavs] : navs;
 
   return (
     <aside
