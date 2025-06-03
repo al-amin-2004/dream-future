@@ -1,6 +1,6 @@
 const Leaderboard = () => {
   return (
-    <div>Leaderboard</div>
+    <div><h2 className='text-primary font-medium text-3xl text-center animate-pulse'>Comming soon</h2></div>
   )
 }
 

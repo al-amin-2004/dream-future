@@ -27,7 +27,7 @@ const History = async ({ params }) => {
   const monthlyData = user.monthly?.[year] || {};
 
   return (
-    <div className="max-w-full h-full md:overflow-y-scroll p-2 md:p-6 bg-gray-900 text-white rounded-xl shadow-md space-y-6">
+    <div className="max-w-full h-full md:overflow-y-scroll md:p-6 md:bg-gray-900 text-white rounded-xl shadow-md space-y-6">
       <h3 className="text-xl md:text-3xl font-semibold my-3 text-center">Payment History - {year}</h3>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between">
 
