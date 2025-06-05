@@ -38,11 +38,6 @@ const Profile = async ({ params }) => {
                         <h2 className="font-medium">Unique ID:</h2>
                         <p className="text-sm md:text-base">{user.uid}</p>
                     </div>
-                    <div className="flex justify-center gap-8 md:mt-7">
-                        <a href=""><FacebookIcon /></a>
-                        <a href=""><InstagramIcon /></a>
-                        <a href=""><YoutubeIcon /></a>
-                    </div>
                 </div>
             </div>
 
