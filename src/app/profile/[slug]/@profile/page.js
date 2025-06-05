@@ -38,6 +38,10 @@ const Profile = async ({ params }) => {
                         <h2 className="font-medium">Unique ID:</h2>
                         <p className="text-sm md:text-base">{user.uid}</p>
                     </div>
+                    <div className="border-b border-border flex justify-between md:px-3">
+                        <h2 className="font-medium">Blood:</h2>
+                        <p className="text-sm md:text-base">{user.blood}</p>
+                    </div>
                 </div>
             </div>
 
