@@ -67,7 +67,7 @@ export const Card = ({ user }) => {
           </div>
 
           <div>
-            <Link href={`/profile/${user.uid}/history`}>
+            <Link href={`/profile/${user.uid}`}>
               <Button className="w-full hover:translate-0 rounded-sm mb-2">{user.name}'s Profile</Button>
             </Link>
 
