@@ -1,18 +1,12 @@
-
 import { BloodIcon, DiamondIcon } from "@/components/icons/icons";
 import { Button } from "@/components/ui/Button";
 import { CopyBox } from "@/components/ui/Copybox";
 import Image from "next/image";
 import Link from "next/link";
 
-
-export const Card = ({ user, idx }) => {
-
-
+export const Card = ({ user }) => {
   return (
-    <li
-      className='w-full md:w-72 group hover:row-span-2 hover:h-full bg-white rounded-md cursor-pointer transition-all duration-500'
-    >
+    <li className="w-full md:w-72 group hover:row-span-2 hover:h-full bg-white rounded-md cursor-pointer transition-all duration-500">
       <div className="p-2 md:p-5 rounded-2xl flex flex-col items-center gap-2">
         <div className="size-24 bg-slate-500/20 border rounded-md -mt-8 overflow-hidden ">
           <Image
@@ -57,7 +51,7 @@ export const Card = ({ user, idx }) => {
             )}
           </div>
 
-          <div className="flex justify-between border-t px-1 mt-5">
+          <div className="flex justify-between border-t px-1 mt-2">
             <div className="text-center">
               <h4 className="font-medium">Balance</h4>
               <p>{user.totalDeposit}</p>
@@ -72,11 +66,15 @@ export const Card = ({ user, idx }) => {
             </div>
           </div>
 
-          <Link href={`/profile/${user.uid}/history`}>
-            <Button className="w-full hover:translate-0">
-              Payment History
-            </Button>
-          </Link>
+          <div>
+            <Link href={`/profile/${user.uid}/history`}>
+              <Button className="w-full hover:translate-0 rounded-sm mb-2">{user.name}'s Profile</Button>
+            </Link>
+
+            <Link href={`/profile/${user.uid}/history`}>
+              <Button className="w-full hover:translate-0 rounded-sm">Payment History</Button>
+            </Link>
+          </div>
         </div>
       </div>
     </li>
