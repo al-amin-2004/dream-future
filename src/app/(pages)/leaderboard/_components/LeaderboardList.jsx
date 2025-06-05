@@ -5,7 +5,7 @@ export const LeaderboardList = ({ sortedDatas }) => {
   return (
     <section>
       <div className="container mx-auto">
-        <ul className="w-full text-text dark:text-dark-text bg-primary/20 dark:bg-gray-900/50 p-2 md:p-5 rounded-b-lg   font-body font-medium dark:font-normal">
+        <ul className="w-full text-text dark:text-dark-text bg-primary/20 dark:bg-gray-900/50 p-2 md:p-5 rounded-lg font-body font-medium dark:font-normal">
           <li className="grid grid-cols-3 md:grid-cols-7 items-center py-2 md:py-4 px-2 md:px-7">
             <p>Place</p>
             <p>Name</p>
