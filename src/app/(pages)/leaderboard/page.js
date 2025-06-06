@@ -18,7 +18,7 @@ const leaderboard = async () => {
 
 
   return (
-    <main className="px-2.5 md:px-0">
+    <main className="px-2.5 md:px-0 mb-10">
       <LeaderboardStage reorderedTopThree={reorderedTopThree} />
       <LeaderboardList sortedDatas={sortedDatas} />
     </main>

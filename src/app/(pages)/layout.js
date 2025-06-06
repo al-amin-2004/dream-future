@@ -1,3 +1,4 @@
+import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { Inter, Nunito } from "next/font/google";
 
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
     <div>
       <Header/>
       {children}
+      <Footer/>
     </div>
   );
 }

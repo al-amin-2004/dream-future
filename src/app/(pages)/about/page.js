@@ -1,10 +1,9 @@
 'use client';
 
-import Image from "next/image";
 
 const about = () => {
   return (
-    <main className="bg-white text-gray-800 dark:bg-transparent dark:text-gray-200 transition-colors duration-300">
+    <main className="md:h-screen bg-white text-gray-800 dark:bg-transparent dark:text-gray-200 transition-colors duration-300">
       <section className="py-16 px-4 max-w-5xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 text-primary dark:text-green-400">
           About Us
