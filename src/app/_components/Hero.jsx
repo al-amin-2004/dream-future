@@ -17,9 +17,8 @@ export const Hero = () => {
             Smart Banking to Manage Your Money & Transections
           </h2>
           <p className="md:text-xl font-body text-text-secondary dark:text-dark-text-secondary">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Perspiciatis rem mollitia ex minima accusamus commodi veniam error
-            sint quo reiciendis?
+            "A fast, secure, and smart way to deposit, track expenses, and
+            manage your money — all in one platform."
           </p>
 
           <div className="space-x-10">
