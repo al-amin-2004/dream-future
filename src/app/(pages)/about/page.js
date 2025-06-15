@@ -1,6 +1,5 @@
 'use client';
 
-
 const about = () => {
   return (
     <main className="md:h-screen bg-white text-gray-800 dark:bg-transparent dark:text-gray-200 transition-colors duration-300">
