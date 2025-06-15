@@ -17,16 +17,16 @@ const about = () => {
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {[
             {
+              title: "Our Journey",
+              desc: "Started in 2025, Dream Future grew from a small bond to a nationwide initiative.",
+            },
+            {
               title: "Our Mission",
               desc: "To empower youth with discipline, unity, and responsibility.",
             },
             {
               title: "Our Vision",
               desc: "To create a society where dreams become reality through collaboration.",
-            },
-            {
-              title: "Our Journey",
-              desc: "Started in 2025, Dream Future grew from a small bond to a nationwide initiative.",
             },
           ].map((item, idx) => (
             <div
