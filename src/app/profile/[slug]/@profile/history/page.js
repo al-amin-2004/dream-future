@@ -25,6 +25,7 @@ const History = async ({ params }) => {
 
   const year = "2025";
   const monthlyData = user.monthly?.[year] || {};
+  
 
   return (
     <div className="max-w-full h-full md:overflow-y-scroll md:p-6 md:bg-gray-900 text-white rounded-xl shadow-md space-y-6">

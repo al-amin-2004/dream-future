@@ -1,8 +1,11 @@
-
 const months = [
   "jan", "feb", "mar", "apr", "may", "jun",
   "jul", "aug", "sep", "oct", "nov", "dec"
 ];
+const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
+const currentMonth = currentDate.getMonth(); // in number
+const currentMonthStr = months[currentDate.getMonth()]; // in String
 
 
 // Fetching and processing leaderboard data
@@ -79,62 +82,19 @@ export const members = async () => {
       monthly[year][month][type] = isNaN(val) ? null : val;
     });
 
+    // Ensure current month exists with default values if missing
 
-    // const monthly = [];
-    // const now = new Date();
-    // const tempMonthlyMap = {};
+    if (!monthly[currentYear.toString()]) {
+      monthly[currentYear.toString()] = {};
+    }
 
-    // Object.keys(depositUser).forEach((key) => {
-    //   const match = key.match(/^([a-z]{3})-(\d{4})-(date|extra|amount)$/);
-    //   if (!match) return;
-
-    //   const [_, monthStr, yearStr, type] = match;
-    //   const year = yearStr;
-    //   const month = monthStr.toLowerCase();
-
-    //   if (!tempMonthlyMap[year]) tempMonthlyMap[year] = {};
-    //   if (!tempMonthlyMap[year][month]) {
-    //     tempMonthlyMap[year][month] = { amount: null, date: null, extra: null };
-    //   }
-
-    //   const val = Number(depositUser[key]);
-    //   tempMonthlyMap[year][month][type] = isNaN(val) ? null : val;
-    // });
-
-
-    // Object.entries(tempMonthlyMap).forEach(([year, monthsObj]) => {
-    //   const filteredMonths = [];
-
-    //   Object.entries(monthsObj).forEach(([month, data]) => {
-    //     const currentYear = now.getFullYear();
-    //     const currentMonthIndex = now.getMonth();
-
-    //     const monthIndex = months.indexOf(month);
-
-
-    //     const include =
-    //       Number(year) < currentYear ||
-    //       (Number(year) === currentYear && monthIndex <= currentMonthIndex);
-
-    //     if (include) {
-    //       filteredMonths.push({
-    //         [month]: {
-    //           amount: data.amount ?? 0,
-    //           date: data.date ?? 0,
-    //           extra: data.extra ?? 0
-    //         }
-    //       });
-    //     }
-    //   });
-
-    //   if (filteredMonths.length > 0) {
-    //     monthly.push({
-    //       year,
-    //       month: filteredMonths
-    //     });
-    //   }
-    // });
-
+    if (!monthly[currentYear.toString()][currentMonthStr]) {
+      monthly[currentYear.toString()][currentMonthStr] = {
+        date: 0,
+        extra: 0,
+        amount: 0
+      };
+    }
 
 
 
@@ -170,10 +130,7 @@ export const members = async () => {
 
     // Ekhane Total Stone Calculate kora hoise
     let totalStone = 0;
-
-    const currentDate = new Date();
-    const currentYear = currentDate.getFullYear();
-    const currentMonthIndex = currentDate.getMonth(); // Jan = 0, Dec = 11
+    const currentMonthIndex = currentMonth;
 
     Object.entries(monthly).forEach(([yearStr, monthsObj]) => {
       const year = Number(yearStr);

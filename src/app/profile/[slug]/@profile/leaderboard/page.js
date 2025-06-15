@@ -15,7 +15,8 @@ const Leaderboard = async ({ params }) => {
 
   // ==== Ekhane My Position ber kora hoise ==== //
   const myIndex = sortedDatas.findIndex((m) => m.uid === slug);
-  const myPosition = myIndex + 1; // কারণ index 0 থেকে শুরু হয়
+  const myPosition = myIndex + 1;
+  
 
   return (
     <div className="max-w-full h-full md:overflow-y-scroll">
