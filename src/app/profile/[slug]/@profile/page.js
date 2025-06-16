@@ -4,7 +4,6 @@ import Image from "next/image"
 const Profile = async ({ params }) => {
     const member = await members();
 
-
     const { slug } = await params;
 
     const user = member.find((m) => m.uid === slug);
@@ -12,7 +11,7 @@ const Profile = async ({ params }) => {
         return <div className="text-red-500 text-center mt-10">User Not Found!</div>
     }
 
-
+    // ekhane current month diposit yet logic build kora hoiche
     const now = new Date();
     const currentYear = now.getFullYear().toString();
     const monthNames = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
@@ -20,7 +19,6 @@ const Profile = async ({ params }) => {
 
 
     const currentData = user.monthly[currentYear][currentMonthKey];
-
 
     const hasDeposited = currentData?.amount > 0;
 

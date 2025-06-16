@@ -6,9 +6,34 @@ import Link from "next/link";
 
 export const Header = async ({ slug }) => {
   const member = await members();
+
+
+   // ekhane Multiple account thale ta ta main account e marge kora hocche
+    const finalData = [];
+    const uidMap = {};
+
+    member.forEach((member) => {
+        const { uid } = member;
+
+        if (!uid) {
+            finalData.push(member);
+            return;
+        }
+
+        if (!uidMap[uid]) {
+
+            uidMap[uid] = { ...member, other: [] };
+            finalData.push(uidMap[uid]);
+        } else {
+            uidMap[uid].other.push(member);
+        }
+    });
+
+console.log(finalData);
+
   
 
-  const user = member.find((m) => m.uid === slug);
+  const user = finalData.find((m) => m.uid === slug);
   if (!user) {
     return (
       <div className="text-red-500 text-center mt-10">User Not Found!</div>
@@ -34,6 +59,7 @@ export const Header = async ({ slug }) => {
       </div>
 
       <div className="flex gap-3 items-center">
+        <div className={`text-primary ${!user.other.length > 0 && "hidden"}`}>1 2 3</div>
 
         <div className="flex items-center gap-1.5 md:gap-2 text-text dark:text-dark-text bg-gray-300/20 px-2 md:px-3 py-0.5 md:py-1 rounded-full">
           <DiamondIcon className="size-4 md:size-5" />

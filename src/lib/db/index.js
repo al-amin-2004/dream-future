@@ -54,7 +54,7 @@ export const members = async () => {
 
 
   // ==== Ekhane Duita Json Merge kora hoise ==== //
-  const finalData = depositData.map(depositUser => {
+  const allUsers = depositData.map(depositUser => {
     const profileUser = profileData.find(p => p.no === depositUser.no);
 
 
@@ -168,6 +168,9 @@ export const members = async () => {
 
 
 
+
+
+
     return {
       no: profileUser?.no,
       name: profileUser?.name,
@@ -186,6 +189,32 @@ export const members = async () => {
     };
   });
 
-  return finalData;
+
+  // ekhane Multiple account thale ta ta main account e marge kora hocche
+  // const finalData = [];
+  // const uidMap = {};
+
+  // allUsers.forEach((member) => {
+  //   const { uid } = member;
+
+  //   if (!uid) {
+  //     finalData.push(member);
+  //     return;
+  //   }
+
+  //   if (!uidMap[uid]) {
+
+  //     uidMap[uid] = { ...member, other: [] };
+  //     finalData.push(uidMap[uid]);
+  //   } else {
+  //     uidMap[uid].other.push(member);
+  //   }
+  // });
+
+
+  // return finalData;
+
+  return allUsers;
+
 }
 
