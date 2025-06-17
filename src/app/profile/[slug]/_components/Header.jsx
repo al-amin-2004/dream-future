@@ -2,7 +2,6 @@ import { DiamondIcon } from "@/components/icons/icons";
 import { ThemeToggleBtn } from "@/components/ui/ThemeToggleBtn";
 import { members } from "@/lib/db";
 import { groupMembersWithOwners } from "@/lib/uitils/groupMembersWithOwners";
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -39,10 +38,12 @@ export const Header = async ({ slug }) => {
       </div>
 
       <div className="flex gap-3 items-center">
-        <div className={`text-primary ${!user.another.length > 0 && "hidden"}`}>
-          <Link href={`/profile/${slug}/${user.another.length + 1}`}>
-            {user.another.length + 1}
-          </Link>
+        <div className={`text-primary space-x-4 ${!user.another.length > 0 && "hidden"}`}>
+          {user.another.map((idx, i) => (
+            <Link key={idx} href={`/profile/${slug}/${user.another.length}`} className="bg-primary/30 p-1.5 rounded-full">
+              {i + 2}
+            </Link>
+          ))}
         </div>
 
         <div className="flex items-center gap-1.5 md:gap-2 text-text dark:text-dark-text bg-gray-300/20 px-2 md:px-3 py-0.5 md:py-1 rounded-full">
