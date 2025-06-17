@@ -9,7 +9,6 @@ import Link from "next/link";
 export const Header = async ({ slug }) => {
   const member = await members();
 
-  
   const grouped = groupMembersWithOwners(member);
 
   const user = grouped.find((m) => m.uid === slug);
@@ -41,7 +40,9 @@ export const Header = async ({ slug }) => {
 
       <div className="flex gap-3 items-center">
         <div className={`text-primary ${!user.onother.length > 0 && "hidden"}`}>
-          1 2 3
+          <Link href={`/profile/${slug}/${user.onother.length + 1}`}>
+            {user.onother.length + 1}
+          </Link>
         </div>
 
         <div className="flex items-center gap-1.5 md:gap-2 text-text dark:text-dark-text bg-gray-300/20 px-2 md:px-3 py-0.5 md:py-1 rounded-full">
