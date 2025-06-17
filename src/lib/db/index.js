@@ -167,10 +167,6 @@ export const members = async () => {
     });
 
 
-
-
-
-
     return {
       no: profileUser?.no,
       name: profileUser?.name,
@@ -180,6 +176,7 @@ export const members = async () => {
       mobile: profileUser?.mobile && `0${profileUser.mobile}`,
       email: profileUser?.email,
       blood: profileUser?.blood,
+      owner: profileUser?.owner,
       totalStone: Math.round(totalStone),
       totalDeposit,
       totalExtra,
@@ -189,30 +186,6 @@ export const members = async () => {
     };
   });
 
-
-  // ekhane Multiple account thale ta ta main account e marge kora hocche
-  // const finalData = [];
-  // const uidMap = {};
-
-  // allUsers.forEach((member) => {
-  //   const { uid } = member;
-
-  //   if (!uid) {
-  //     finalData.push(member);
-  //     return;
-  //   }
-
-  //   if (!uidMap[uid]) {
-
-  //     uidMap[uid] = { ...member, other: [] };
-  //     finalData.push(uidMap[uid]);
-  //   } else {
-  //     uidMap[uid].other.push(member);
-  //   }
-  // });
-
-
-  // return finalData;
 
   return allUsers;
 
