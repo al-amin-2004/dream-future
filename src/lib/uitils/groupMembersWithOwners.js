@@ -1,30 +1,30 @@
 export const groupMembersWithOwners = (members) => {
-    const uidMap = new Map();
+  const uidMap = new Map();
 
 
-    for (const member of members) {
-      if (member.uid) {
-        uidMap.set(member.uid, { ...member, onother: [] });
-      }
+  for (const member of members) {
+    if (member.uid) {
+      uidMap.set(member.uid, { ...member, another: [] });
     }
+  }
 
-    const results = [];
+  const results = [];
 
-    for (const member of members) {
-      if (member.owner) {
-        const owner = uidMap.get(member.owner);
-        if (owner) {
-          owner.onother.push(member);
-        } else {
-          results.push(member);
-        }
-      } else if (uidMap.has(member.uid)) {
-        results.push(uidMap.get(member.uid)); 
+  for (const member of members) {
+    if (member.owner) {
+      const owner = uidMap.get(member.owner);
+      if (owner) {
+        owner.another.push(member);
       } else {
         results.push(member);
       }
+    } else if (uidMap.has(member.uid)) {
+      results.push(uidMap.get(member.uid));
+    } else {
+      results.push(member);
     }
-
-    return results;
   }
+
+  return results;
+}
 

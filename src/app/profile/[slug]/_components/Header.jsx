@@ -39,9 +39,9 @@ export const Header = async ({ slug }) => {
       </div>
 
       <div className="flex gap-3 items-center">
-        <div className={`text-primary ${!user.onother.length > 0 && "hidden"}`}>
-          <Link href={`/profile/${slug}/${user.onother.length + 1}`}>
-            {user.onother.length + 1}
+        <div className={`text-primary ${!user.another.length > 0 && "hidden"}`}>
+          <Link href={`/profile/${slug}/${user.another.length + 1}`}>
+            {user.another.length + 1}
           </Link>
         </div>
 

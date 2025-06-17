@@ -1,14 +1,14 @@
 
 
-const onotherProfile = async ({ params }) => {
+const anotherProfile = async ({ params }) => {
 
     const { id } = await params;
 
     return (
         <div className="text-2xl text-primary">
-           {id}
+            {id}
         </div>
     )
 }
 
-export default onotherProfile;
+export default anotherProfile;
