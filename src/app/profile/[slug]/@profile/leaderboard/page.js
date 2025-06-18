@@ -24,9 +24,8 @@ const Leaderboard = async ({ params }) => {
   }
 
 
-
   //  Sort only main members
-  const sortedDatas = grouped.sort((a, b) => b.totalStone - a.totalStone);
+  const sortedDatas = allMembers.sort((a, b) => b.totalStone - a.totalStone);
 
   //  Find my position
   const myIndex = sortedDatas.findIndex((m) => m.uid === user.uid);
