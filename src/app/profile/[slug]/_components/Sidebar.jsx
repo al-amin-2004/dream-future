@@ -78,7 +78,6 @@ export const Sidebar = ({ slug }) => {
               className={`px-5 py-2 mb-1 flex items-center gap-3 font-medium rounded-md hover:bg-primary dark:hover:bg-gray-400/20 hover:ps-6 transition-all ${
                 active === idx && "bg-primary dark:bg-gray-400/20 ps-6"
               }`}
-              // onClick={() => setActive(idx)}
               onClick={() => handleList(idx)}
             >
               {icon} {label}

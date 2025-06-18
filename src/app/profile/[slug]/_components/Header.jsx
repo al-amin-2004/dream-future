@@ -10,7 +10,18 @@ export const Header = async ({ slug }) => {
 
   const grouped = groupMembersWithOwners(member);
 
-  const user = grouped.find((m) => m.uid === slug);
+  let user = grouped.find((m) => slug === m.uid);
+
+  if (!user) {
+    for (const parent of grouped) {
+      const foundSub = parent.another.find((sub) => sub.uid === slug);
+      if (foundSub) {
+        user = foundSub;
+        break;
+      }
+    }
+  }
+
   if (!user) {
     return (
       <div className="text-red-500 text-center mt-10">User Not Found!</div>
@@ -38,10 +49,19 @@ export const Header = async ({ slug }) => {
       </div>
 
       <div className="flex gap-3 items-center">
-        <div className={`text-primary flex gap-3 me-3 ${!user.another.length > 0 && "hidden"}`}>
-          {user.another.map((u, idx) => (
-            <Link key={idx} href={`/profile/${slug}/${idx + 2}`} className="">
-              <p className="bg-primary/15 p-1 px-2.5 rounded-full" title={u.name}>{idx + 2}</p>
+        <div
+          className={`text-primary flex gap-3 me-3 ${
+            !user.another?.length > 0 && "hidden"
+          }`}
+        >
+          {user.another?.map((u, idx) => (
+            <Link key={idx} href={`/profile/${slug}-${idx + 1}`}>
+              <p
+                className="bg-primary/15 p-1 px-2.5 rounded-full"
+                title={u.name}
+              >
+                {idx + 1}
+              </p>
             </Link>
           ))}
         </div>
