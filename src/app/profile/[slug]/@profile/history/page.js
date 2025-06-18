@@ -1,6 +1,7 @@
 import { members } from "@/lib/db";
 import Image from "next/image";
 import "@/styles/scrollbar.css"
+import { groupMembersWithOwners } from "@/lib/uitils/groupMembersWithOwners";
 
 const monthNames = {
   jan: "January",
@@ -20,7 +21,20 @@ const monthNames = {
 const History = async ({ params }) => {
   const member = await members();
   const { slug } = await params;
-  const user = member.find((m) => m.uid === slug);
+  const grouped = groupMembersWithOwners(member);
+
+  //  Find main or sub account based on slug
+  let user = grouped.find((m) => m.uid === slug);
+
+  if (!user) {
+    for (const parent of grouped) {
+      const found = parent.another.find((sub) => sub.uid === slug);
+      if (found) {
+        user = found;
+        break;
+      }
+    }
+  }
 
 
   const year = "2025";

@@ -21,7 +21,6 @@ const Profile = async ({ params }) => {
     }
   }
 
-  // 🔴 If no user found
   if (!user) {
     return <div className="text-red-500 text-center mt-10">User Not Found!</div>;
   }

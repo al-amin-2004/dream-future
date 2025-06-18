@@ -1,33 +1,43 @@
 import { LeaderboardList } from "@/app/(pages)/leaderboard/_components";
 import { DiamondIcon } from "@/components/icons/icons";
 import { members } from "@/lib/db";
-import "@/styles/scrollbar.css"
+import { groupMembersWithOwners } from "@/lib/uitils/groupMembersWithOwners";
+import "@/styles/scrollbar.css";
 import Image from "next/image";
 
 const Leaderboard = async ({ params }) => {
-  const member = await members()
-  const { slug } = await params;
+  const allMembers = await members();
+  const grouped = groupMembersWithOwners(allMembers);
+  const { slug } = params;
 
-  const user = member.find((m) => m.uid === slug);
+  //  Find main or sub account based on slug
+  let user = grouped.find((m) => m.uid === slug);
 
-  // ==== Ekhane Leaderboard er jonno list sorting kora hoise ==== //
-  const sortedDatas = member.sort((a, b) => b.totalStone - a.totalStone);
+  if (!user) {
+    for (const parent of grouped) {
+      const found = parent.another.find((sub) => sub.uid === slug);
+      if (found) {
+        user = found;
+        break;
+      }
+    }
+  }
 
-  // ==== Ekhane My Position ber kora hoise ==== //
-  const myIndex = sortedDatas.findIndex((m) => m.uid === slug);
+
+
+  //  Sort only main members
+  const sortedDatas = grouped.sort((a, b) => b.totalStone - a.totalStone);
+
+  //  Find my position
+  const myIndex = sortedDatas.findIndex((m) => m.uid === user.uid);
   const myPosition = myIndex + 1;
-  
 
   return (
     <div className="max-w-full h-full md:overflow-y-scroll">
-
-
       <ul className="w-full text-text dark:text-dark-text bg-primary/20 dark:bg-gray-900/50 p-2 md:p-5 rounded-lg font-body font-medium dark:font-normal mb-4 md:mb-8">
         <h2 className="mb-3 text-xl md:text-2xl">My Position</h2>
 
-        <li
-          className="bg-yellow-100 dark:bg-yellow-900/40 border border-yellow-400 dark:border-yellow-600 rounded-md grid grid-cols-7 items-center py-3 md:py-2 px-2 md:px-6 text-sm md:text-base shadow-sm"
-        >
+        <li className="bg-yellow-100 dark:bg-yellow-900/40 border border-yellow-400 dark:border-yellow-600 rounded-md grid grid-cols-7 items-center py-3 md:py-2 px-2 md:px-6 text-sm md:text-base shadow-sm">
           <p className="font-bold text-yellow-900 dark:text-yellow-200">{myPosition}</p>
 
           <div className="flex items-center gap-4 col-start-2 col-end-7">
@@ -48,18 +58,15 @@ const Leaderboard = async ({ params }) => {
           <div className="col-start-7 place-self-end self-center text-end flex justify-end items-center gap-1 bg-yellow-300/40 dark:bg-yellow-700/40 px-1 md:px-2 rounded-full">
             <DiamondIcon className="size-4 text-yellow-600 dark:text-yellow-300" />
             <p className="text-yellow-800 dark:text-yellow-100">
-              {user.totalStone < 10
-                ? `0${user.totalStone}`
-                : user.totalStone}
+              {user.totalStone < 10 ? `0${user.totalStone}` : user.totalStone}
             </p>
           </div>
         </li>
-
       </ul>
 
       <LeaderboardList sortedDatas={sortedDatas} />
     </div>
-  )
-}
+  );
+};
 
 export default Leaderboard;
