@@ -48,16 +48,16 @@ export const Header = async ({ slug }) => {
         <p className="text-dark-primary">A believable Comitti limited</p>
       </div>
 
-      <div className="flex gap-3 items-center">
+      <div className="flex gap-1.5 md:gap-3 items-center">
         <div
-          className={`text-primary flex gap-3 me-3 ${
+          className={`text-primary flex gap-1 md:gap-3 md:me-3 ${
             !user.another?.length > 0 && "hidden"
           }`}
         >
           {user.another?.map((u, idx) => (
             <Link key={idx} href={`/profile/${slug}-${idx + 1}`}>
               <p
-                className="bg-primary/15 p-1 px-2.5 rounded-full"
+                className="bg-primary/15 py-0.5 px-2 md:p-1 md:px-2.5 rounded-full"
                 title={u.name}
               >
                 {idx + 1}
@@ -66,7 +66,7 @@ export const Header = async ({ slug }) => {
           ))}
         </div>
 
-        <div className="flex items-center gap-1.5 md:gap-2 text-text dark:text-dark-text bg-gray-300/20 px-2 md:px-3 py-0.5 md:py-1 rounded-full">
+        <div className="flex items-center gap-1 md:gap-2 text-text dark:text-dark-text bg-gray-300/20 px-2 md:px-3 py-0.5 md:py-1 rounded-full">
           <DiamondIcon className="size-4 md:size-5" />
           <span className="text-sm md:text-base">{user.totalStone}</span>
         </div>
