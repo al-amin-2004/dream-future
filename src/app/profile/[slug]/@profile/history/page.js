@@ -57,19 +57,19 @@ const History = async ({ params }) => {
       </div>
 
       <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-        <div className="bg-gray-800 p-2 md:p-4 rounded-lg shadow">
+        <div className="bg-gray-800 border border-green-400 p-2 md:p-4 rounded-lg shadow">
           <p className="text-lg font-semibold">Total Deposit</p>
           <p className="md:text-2xl font-bold text-green-400">৳ {user.totalDeposit}</p>
         </div>
-        <div className="bg-gray-800 p-2 md:p-4 rounded-lg shadow">
+        <div className="bg-gray-800 border border-yellow-400 p-2 md:p-4 rounded-lg shadow">
           <p className="text-lg font-semibold">Total Extra</p>
           <p className="md:text-2xl font-bold text-yellow-400">৳ {user.totalExtra}</p>
         </div>
-        <div className="bg-gray-800 p-2 md:p-4 rounded-lg shadow">
+        <div className="bg-gray-800 border border-blue-400 p-2 md:p-4 rounded-lg shadow">
           <p className="text-lg font-semibold">Total Money</p>
           <p className="md:text-2xl font-bold text-blue-400">৳ {user.totalMoney}</p>
         </div>
-        <div className="bg-gray-800 p-2 md:p-4 rounded-lg shadow">
+        <div className="bg-gray-800 border border-purple-400 p-2 md:p-4 rounded-lg shadow">
           <p className="text-lg font-semibold">Total Stone</p>
           <p className="md:text-2xl font-bold text-purple-400">{user.totalStone}</p>
         </div>
