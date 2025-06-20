@@ -78,9 +78,9 @@ const History = async ({ params }) => {
       <div>
         <div className="grid gap-4">
           {Object.entries(monthlyData).reverse().map(([monthKey, value]) => (
-            <div key={monthKey} className={`p-2 md:p-4 rounded-lg shadow-md ${value.amount > 0 ? 'bg-green-800' : 'bg-red-800'}`}>
-              <h4 className="font-semibold text-xl md:text-3xl">{monthNames[monthKey]}</h4>
-              <div className="md:flex justify-between mt-2 md:mt-3.5">
+            <div key={monthKey} className={`p-2 md:p-4 rounded-sm md:rounded-lg shadow-md border ${value.amount > 0 ? 'bg-green-800/15 border-green-500' : 'bg-red-800/15 border-red-600'}`}>
+              <h4 className="font-semibold text-lg md:text-3xl">{monthNames[monthKey]}</h4>
+              <div className="flex justify-between mt-1 md:mt-3.5 text-xs md:text-base">
                 <div>
                   <p><strong>Amount:</strong> ৳ {value.amount}</p>
                   <p><strong>Date:</strong> {value.date === 0 ? "Not Paid" : `Paid on ${value.date}`}</p>
