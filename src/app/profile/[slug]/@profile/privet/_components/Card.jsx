@@ -5,8 +5,34 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const Card = ({ user }) => {
+  // ✅ Current month deposit status
+  const now = new Date();
+  const currentYear = now.getFullYear().toString();
+  const monthNames = [
+    "jan",
+    "feb",
+    "mar",
+    "apr",
+    "may",
+    "jun",
+    "jul",
+    "aug",
+    "sep",
+    "oct",
+    "nov",
+    "dec",
+  ];
+  const currentMonthKey = monthNames[now.getMonth()];
+  const currentData = user.monthly?.[currentYear]?.[currentMonthKey];
+  const hasDeposited = currentData?.amount > 0;
+
   return (
-    <li className="w-full md:w-72 group hover:row-span-2 hover:h-full bg-white rounded-md cursor-pointer transition-all duration-500">
+    <li
+      className={`w-full md:w-72 group hover:row-span-2 hover:h-full rounded-md cursor-pointer transition-all duration-500 border ${
+        hasDeposited ? "bg-white" : "bg-red-200 border-red-500"
+      }`}
+      title={hasDeposited ? "Deposited" : "Not Deposited"}
+    >
       <div className="p-2 md:p-5 rounded-2xl flex flex-col items-center gap-2">
         <div className="size-24 bg-slate-500/20 border rounded-md -mt-8 overflow-hidden ">
           <Image
@@ -68,11 +94,15 @@ export const Card = ({ user }) => {
 
           <div>
             <Link href={`/profile/${user.uid}`}>
-              <Button className="w-full hover:translate-0 rounded-sm mb-2">{user.name}'s Profile</Button>
+              <Button className="w-full hover:translate-0 rounded-sm mb-2">
+                {user.name}'s Profile
+              </Button>
             </Link>
 
             <Link href={`/profile/${user.uid}/history`}>
-              <Button className="w-full hover:translate-0 rounded-sm">Payment History</Button>
+              <Button className="w-full hover:translate-0 rounded-sm">
+                Payment History
+              </Button>
             </Link>
           </div>
         </div>

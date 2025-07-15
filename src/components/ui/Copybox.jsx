@@ -14,7 +14,7 @@ export const CopyBox = ({ content }) => {
   };
 
   return (
-    <div className="flex items-center gap-2 px-1.5 py-1">
+    <div className="flex items-center gap-2 px-1.5 py-1" title="Copy UID">
       <span>{content}</span>
       <button onClick={handleCopy} className="cursor-pointer">
         <CopyIcon />
