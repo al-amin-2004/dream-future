@@ -91,11 +91,11 @@ const Profile = async ({ params }) => {
 
           <div className="flex justify-between md:justify-around text-center bg-slate-400 py-1.5 md:py-3 px-2.5 rounded-2xl mt-3 md:mt-28">
             <div className="space-y-1.5">
-              <p className="bg-orange-400 size-11 mx-auto p-1.5 rounded-full font-medium md:text-xl">{user.totalDeposit}</p>
+              <p className="bg-orange-400 size-13 mx-auto p-1.5 rounded-full font-medium md:text-xl content-center">{user.totalDeposit}</p>
               <p className="text-sm md:text-base">Total Deposit</p>
             </div>
             <div className="space-y-1.5">
-              <p className="bg-orange-400 size-11 mx-auto p-1.5 rounded-full font-medium md:text-xl">{user.totalExtra}</p>
+              <p className="bg-orange-400 size-13 mx-auto p-1.5 rounded-full font-medium md:text-xl content-center">{user.totalExtra}</p>
               <p className="text-sm md:text-base">Extra Deposit</p>
             </div>
           </div>
