@@ -50,7 +50,7 @@ export const Sidebar = ({ slug }) => {
 
   return (
     <aside
-      className={`md:w-[25rem] w-[80%] h-full border-r border-dark-border fixed md:static z-50 bg-current transition-all ${
+      className={`md:w-[25rem] w-[80%] h-full border-r border-dark-border fixed md:static z-50 bg-white dark:bg-current transition-all ${
         open ? "left-0" : "-left-full"
       }`}
     >

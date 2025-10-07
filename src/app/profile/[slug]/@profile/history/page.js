@@ -43,7 +43,7 @@ const History = async ({ params }) => {
 
   return (
     <div className="max-w-full h-full md:overflow-y-scroll md:p-6 md:bg-gray-900 text-white rounded-xl shadow-md space-y-6">
-      <h3 className="text-xl md:text-3xl font-semibold my-3 text-center">Payment History - {year}</h3>
+      <h3 className="text-xl md:text-3xl font-semibold my-3 text-center text-black dark:text-white">Payment History - {year}</h3>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between">
 
         <h2 className="text-2xl font-bold hidden md:block">{user.name}</h2>
@@ -56,7 +56,7 @@ const History = async ({ params }) => {
         )}
       </div>
 
-      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
         <div className="bg-gray-800 border border-green-400 p-2 md:p-4 rounded-lg shadow">
           <p className="text-lg font-semibold">Total Deposit</p>
           <p className="md:text-2xl font-bold text-green-400">৳ {user.totalDeposit}</p>
@@ -78,7 +78,7 @@ const History = async ({ params }) => {
       <div>
         <div className="grid gap-4">
           {Object.entries(monthlyData).reverse().map(([monthKey, value]) => (
-            <div key={monthKey} className={`p-2 md:p-4 rounded-sm md:rounded-lg shadow-md border ${value.amount > 0 ? 'bg-green-800/15 border-green-500' : 'bg-red-800/15 border-red-600'}`}>
+            <div key={monthKey} className={`p-2 md:p-4 rounded-sm md:rounded-lg shadow-md border text-black dark:text-white ${value.amount > 0 ? 'bg-green-800/15 border-green-500' : 'bg-red-800/15 border-red-600'}`}>
               <h4 className="font-semibold text-lg md:text-3xl">{monthNames[monthKey]}</h4>
               <div className="flex justify-between mt-1 md:mt-3.5 text-xs md:text-base">
                 <div>
