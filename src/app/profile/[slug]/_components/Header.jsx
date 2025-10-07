@@ -27,6 +27,7 @@ export const Header = async ({ slug }) => {
       <div className="text-red-500 text-center mt-10">User Not Found!</div>
     );
   }
+  
   return (
     <header className="row-span-1 px-3 md:px-8 py-1.5 md:py-2 flex justify-between border-b border-dark-border">
       <div className="md:hidden fill-text dark:fill-dark-text">
