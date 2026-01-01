@@ -37,8 +37,8 @@ const History = async ({ params }) => {
   }
 
 
- 
-  const monthlyData = user.monthly?.["2025"] || {};
+  const year = "2025";
+  const monthlyData = user.monthly?.[year] || {};
   
 
   return (
