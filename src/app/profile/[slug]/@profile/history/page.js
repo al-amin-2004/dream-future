@@ -37,13 +37,15 @@ const History = async ({ params }) => {
   }
 
 
-  const year = "2025";
-  const monthlyData = user.monthly?.[year] || {};
+  const year25 = "2025";
+  const year26 = "2026";
+  const monthlyData2025 = user.monthly?.[year25] || {};
+  const monthlyData2026 = user.monthly?.[year26] || {};
   
 
   return (
     <div className="max-w-full h-full md:overflow-y-scroll md:p-6 md:bg-gray-900 text-white rounded-xl shadow-md space-y-6">
-      <h3 className="text-xl md:text-3xl font-semibold my-3 text-center text-black dark:text-white">Payment History - {year}</h3>
+      
       <div className="flex flex-col sm:flex-row sm:items-center justify-between">
 
         <h2 className="text-2xl font-bold hidden md:block">{user.name}</h2>
@@ -75,9 +77,39 @@ const History = async ({ params }) => {
         </div>
       </div>
 
+
+      {/* =================== Year of 2026 ====================== */}
+
+      <h3 className="text-xl mt-10 md:text-3xl font-semibold my-3 text-center text-black dark:text-white">Payment History - {year26}</h3>
+
       <div>
         <div className="grid gap-4">
-          {Object.entries(monthlyData).reverse().map(([monthKey, value]) => (
+          {Object.entries(monthlyData2026).reverse().map(([monthKey, value]) => (
+            <div key={monthKey} className={`p-2 md:p-4 rounded-sm md:rounded-lg shadow-md border text-black dark:text-white ${value.amount > 0 ? 'bg-green-800/15 border-green-500' : 'bg-red-800/15 border-red-600'}`}>
+              <h4 className="font-semibold text-lg md:text-3xl">{monthNames[monthKey]}</h4>
+              <div className="flex justify-between mt-1 md:mt-3.5 text-xs md:text-base">
+                <div>
+                  <p><strong>Amount:</strong> ৳ {value.amount}</p>
+                  <p><strong>Date:</strong> {value.date === 0 ? "Not Paid" : `Paid on ${value.date}`}</p>
+                </div>
+                <div>
+                  <p><strong>Extra:</strong> ৳ {value.extra}</p>
+                  <p><strong>Earned Stone:</strong> {value.date !== 0 ? (value.extra / 10) ? (value.extra / 10) + (30 - value.date) : (30 - value.date) : 0}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+
+      {/* =================== Year of 2025 ====================== */}
+
+      <h3 className="text-xl mt-10 md:text-3xl font-semibold my-3 text-center text-black dark:text-white">Payment History - {year25}</h3>
+
+      <div>
+        <div className="grid gap-4">
+          {Object.entries(monthlyData2025).reverse().map(([monthKey, value]) => (
             <div key={monthKey} className={`p-2 md:p-4 rounded-sm md:rounded-lg shadow-md border text-black dark:text-white ${value.amount > 0 ? 'bg-green-800/15 border-green-500' : 'bg-red-800/15 border-red-600'}`}>
               <h4 className="font-semibold text-lg md:text-3xl">{monthNames[monthKey]}</h4>
               <div className="flex justify-between mt-1 md:mt-3.5 text-xs md:text-base">
