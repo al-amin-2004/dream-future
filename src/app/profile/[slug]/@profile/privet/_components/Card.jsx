@@ -70,7 +70,7 @@ export const Card = ({ user }) => {
             <a href={`tel:${user.mobile}`}>{user.mobile}</a>
 
             {user.blood && (
-              <div div className="flex items-center gap-1">
+              <div className="flex items-center gap-1">
                 <BloodIcon className="size-4" />
                 <p>{user.blood}</p>
               </div>
