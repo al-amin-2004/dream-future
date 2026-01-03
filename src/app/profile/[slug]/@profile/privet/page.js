@@ -11,14 +11,27 @@ const Privet = async () => {
   let totalExtra = 0;
   let totalMoney = 0;
 
+  // member.forEach((curr) => {
+  //   const monthly = curr.monthly?.[2025] || {};
+  //   Object.values(monthly).forEach((m) => {
+  //     totalDeposit += m?.amount || 0;
+  //     totalExtra += m?.extra || 0;
+  //     totalMoney += (m?.amount || 0) + (m?.extra || 0);
+  //   });
+  // });
+
   member.forEach((curr) => {
-    const monthly = curr.monthly?.[2025] || {};
+  const yearlyData = curr.monthly || {};
+
+  Object.values(yearlyData).forEach((monthly) => {
     Object.values(monthly).forEach((m) => {
-      totalDeposit += m?.amount || 0;
-      totalExtra += m?.extra || 0;
-      totalMoney += (m?.amount || 0) + (m?.extra || 0);
+      totalDeposit += Number(m?.amount || 0);
+      totalExtra += Number(m?.extra || 0);
+      totalMoney +=
+        Number(m?.amount || 0) + Number(m?.extra || 0);
     });
   });
+});
 
 
   return (
