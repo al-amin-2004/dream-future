@@ -6,10 +6,11 @@ const Profile = async ({ params }) => {
   const allMembers = await members();
   const grouped = groupMembersWithOwners(allMembers);
 
-  const { slug } = params;
+  const { slug } = await params;
 
-  // ✅ Find main or sub account based on slug
+  // Find main or sub account based on slug
   let user = grouped.find((m) => m.uid === slug);
+  
 
   if (!user) {
     for (const parent of grouped) {
@@ -25,7 +26,7 @@ const Profile = async ({ params }) => {
     return <div className="text-red-500 text-center mt-10">User Not Found!</div>;
   }
 
-  // ✅ Current month deposit status
+  // Current month deposit status
   const now = new Date();
   const currentYear = now.getFullYear().toString();
   const monthNames = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
