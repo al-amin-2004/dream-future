@@ -23,6 +23,8 @@ const History = async ({ params }) => {
   const { slug } = await params;
   const grouped = groupMembersWithOwners(member);
 
+  
+
   //  Find main or sub account based on slug
   let user = grouped.find((m) => m.uid === slug);
 

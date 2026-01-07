@@ -8,7 +8,7 @@ import Image from "next/image";
 const Leaderboard = async ({ params }) => {
   const allMembers = await members();
   const grouped = groupMembersWithOwners(allMembers);
-  const { slug } = params;
+  const { slug } = await params;
 
   //  Find main or sub account based on slug
   let user = grouped.find((m) => m.uid === slug);
